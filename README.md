@@ -106,50 +106,83 @@ Welcome to the Auction System, the ultimate platform where buyers, sellers, and 
    dotnet test
    ```
 
-### API Endpoints:
-| Endpoint                                      | Description                                            |
-|-----------------------------------------------|--------------------------------------------------------|
-| **/api/Admin/auctions-summary**               | Get summary statistics of auctions                     |
-| **/api/Admin/seller-auctions-management**     | Manage auctions of sellers                             |
-| **/api/Admin/all-users**                      | Get all users in the system                            |
-| **/api/Admin/ban-user/{userId}**              | Ban a user                                             |
-| **/api/Admin/unban-user/{userId}**            | Unban a user                                           |
-| **/api/Auction/all-auctions**                 | Get all auctions                                       |
-| **/api/Auction**                              | Create a new auction                                   |
-| **/api/Auction/{auctionId}**                  | Get auction details by ID                              |
-| **/api/Auction/active-auctions**              | Get all active auctions                                |
-| **/api/Auction/details/{auctionId}**          | Get details of a specific auction                      |
-| **/api/Auction/my-auctions**                  | Get auctions created by the logged-in user             |
-| **/api/Auction/canceled/{auctionId}**         | Cancel an auction                                      |
-| **/api/Auction/declare-winner/{auctionId}**   | Declare the winner of an auction                       |
-| **/api/Auction/hot-auctions**                 | Get popular auctions                                   |
-| **/api/Auction/recommended-auctions**         | Get recommended auctions for bidders                   |
-| **/api/Authentication/login**                 | User login                                             |
-| **/api/Authentication/register**              | User registration                                      |
-| **/api/Authentication/reset-password**        | Reset user password                                    |
-| **/api/Authentication/send-otp**              | Send OTP for 2FA                                       |
-| **/api/Authentication/verify-otp**            | Verify OTP                                             |
-| **/api/Authentication/refresh-token**         | Refresh user authentication token                      |
-| **/api/Authentication/logout**                | Logout user                                            |
-| **/api/Bid/place-bid**                        | Place a bid on an auction                              |
-| **/api/Bid/history/{auctionId}**              | Get the bidding history of an auction                  |
-| **/api/Bid/highest/{auctionId}**              | Get the highest bid for an auction                     |
-| **/api/Category/with-active-auctions/{categoryId}** | Get auctions for a specific category                 |
-| **/api/Category/{categoryId}**                 | Get a category by ID                                   |
-| **/api/Category/with-auctions**               | Get all categories with auctions                       |
-| **/api/Deposit/create-intent/{auctionId}**    | Create a payment intent for deposit                    |
-| **/api/Deposit/webhook**                      | Handle Stripe Webhook for deposit                      |
-| **/api/Deposit/has-paid**                     | Check if the deposit has been paid                     |
-| **/api/Payment/create-intent/{auctionId}**    | Create a payment intent for payment                    |
-| **/api/Payment/webhook**                      | Handle Stripe Webhook for payment                      |
-| **/api/Profile/active-bids**                  | Get active bids of the logged-in user                  |
-| **/api/Profile/won-auctions**                 | Get won auctions of the logged-in user                 |
-| **/api/Seller/auctions-summary**              | Get summary of seller auctions                         |
-| **/api/SellerFeedback**                       | Submit feedback for a seller                           |
-| **/api/SellerFeedback/seller/{sellerId}**     | Get feedback for a specific seller                     |
-| **/api/SellerFeedback/seller/{sellerId}/average-rating** | Get average rating of a seller                   |
-| **/api/Wishlist/{key}**                       | Get wishlist of a bidder                               |
-| **/api/Wishlist/{key}**                       | Add or remove items in the wishlist                    |
+
+## Admin Endpoints
+| Endpoint | Description |
+| -------- | ----------- |
+| /api/Admin/auctions-summary | Get summary statistics of auctions |
+| /api/Admin/seller-auctions-management | Manage auctions of sellers |
+| /api/Admin/all-users | Get all users in the system |
+| /api/Admin/ban-user/{userId} | Ban a user |
+| /api/Admin/unban-user/{userId} | Unban a user |
+
+## Auction Endpoints
+| Endpoint | Description |
+| -------- | ----------- |
+| /api/Auction/all-auctions | Get all auctions |
+| /api/Auction | Create a new auction |
+| /api/Auction/{auctionId} | Get auction details by ID |
+| /api/Auction/active-auctions | Get all active auctions |
+| /api/Auction/details/{auctionId} | Get details of a specific auction |
+| /api/Auction/my-auctions | Get auctions created by the logged-in user |
+| /api/Auction/canceled/{auctionId} | Cancel an auction |
+| /api/Auction/declare-winner/{auctionId} | Declare the winner of an auction |
+| /api/Auction/hot-auctions | Get popular auctions |
+| /api/Auction/recommended-auctions | Get recommended auctions for bidders |
+
+## Authentication Endpoints
+| Endpoint | Description |
+| -------- | ----------- |
+| /api/Authentication/login | User login |
+| /api/Authentication/register | User registration |
+| /api/Authentication/reset-password | Reset user password |
+| /api/Authentication/send-otp | Send OTP for 2FA |
+| /api/Authentication/verify-otp | Verify OTP |
+| /api/Authentication/refresh-token | Refresh user authentication token |
+| /api/Authentication/logout | Logout user |
+
+## Bid Endpoints
+| Endpoint | Description |
+| -------- | ----------- |
+| /api/Bid/place-bid | Place a bid on an auction |
+| /api/Bid/history/{auctionId} | Get the bidding history of an auction |
+| /api/Bid/highest/{auctionId} | Get the highest bid for an auction |
+
+## Category Endpoints
+| Endpoint | Description |
+| -------- | ----------- |
+| /api/Category/with-active-auctions/{categoryId} | Get auctions for a specific category |
+| /api/Category/{categoryId} | Get a category by ID |
+| /api/Category/with-auctions | Get all categories with auctions |
+
+## Payment & Deposit Endpoints
+| Endpoint | Description |
+| -------- | ----------- |
+| /api/Deposit/create-intent/{auctionId} | Create a payment intent for deposit |
+| /api/Deposit/webhook | Handle Stripe Webhook for deposit |
+| /api/Deposit/has-paid | Check if the deposit has been paid |
+| /api/Payment/create-intent/{auctionId} | Create a payment intent for payment |
+| /api/Payment/webhook | Handle Stripe Webhook for payment |
+
+## Profile Endpoints
+| Endpoint | Description |
+| -------- | ----------- |
+| /api/Profile/active-bids | Get active bids of the logged-in user |
+| /api/Profile/won-auctions | Get won auctions of the logged-in user |
+
+## Seller Feedback Endpoints
+| Endpoint | Description |
+| -------- | ----------- |
+| /api/SellerFeedback | Submit feedback for a seller |
+| /api/SellerFeedback/seller/{sellerId} | Get feedback for a specific seller |
+| /api/SellerFeedback/seller/{sellerId}/average-rating | Get average rating of a seller |
+
+## Wishlist Endpoints
+| Endpoint | Description |
+| -------- | ----------- |
+| /api/Wishlist/{key} | Get wishlist of a bidder |
+| /api/Wishlist/{key} | Add or remove items in the wishlist |
+
 
 ### Conclusion:
 This Auction System provides a full-featured auction platform for bidders, sellers, and admins. It integrates modern patterns such as CQRS, SignalR, and uses external services like Stripe for payments and Redis for caching the wishlist. The system is highly scalable and designed to handle various auction operations efficiently.
