@@ -44,7 +44,7 @@ Welcome to the Auction System, the ultimate platform where buyers, sellers, and 
    - **Winner Declaration**: A background service is responsible for declaring the winner of auctions once the auction time expires.
 
 ### Technologies Used:
-- **NET 8: This project utilizes the latest stable release of the .NET framework.
+- **.NET 8**: This project utilizes the latest stable release of the .NET framework.
 - **SignalR**: Used for real-time communication and notifications.
 - **Redis**: Used for handling the wishlist functionality of bidders.
 - **Stripe**: Used for handling payments and deposits via Stripe API.
