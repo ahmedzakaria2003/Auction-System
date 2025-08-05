@@ -62,6 +62,7 @@ Welcome to the Auction System, the ultimate platform where buyers, sellers, and 
 
 ### Database and Data Access:
 - **Entity Framework Core**: The system uses EF Core to manage database interactions and perform CRUD operations.
+- SQL: For complex queries or performance optimization, raw SQL queries are executed within EF Core using DbSet.FromSqlRaw() and DbContext.Database.ExecuteSqlRaw().
 - LINQ: The system heavily relies on Language Integrated Query (LINQ) to query and filter data, making it easier to manipulate data in a more readable and maintainable way.
 - **Unit of Work Pattern**: Ensures that database operations are consistent and rolled back if there is an error.
 - **Repositories**: Used to abstract database access logic, making it easier to manage and test.
