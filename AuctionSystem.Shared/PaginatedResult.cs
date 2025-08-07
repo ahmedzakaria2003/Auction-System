@@ -8,6 +8,10 @@ namespace AuctionSystem.Shared
 {
     public class PaginatedResult<TEntity>
     {
+        public PaginatedResult()
+        {
+            
+        }
         public PaginatedResult(int pageNumber, int pageSize, int totalCount, 
             IEnumerable<TEntity> data)
         {

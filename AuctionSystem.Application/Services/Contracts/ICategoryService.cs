@@ -14,7 +14,7 @@ namespace AuctionSystem.Application.Services.Contracts
         Task<IEnumerable<CategoryDto>> GetAllCategoriesAsync();
         Task<IEnumerable<CategoryWithAuctionsDto>> GetAllCategoriesWithAuctionsAsync();
 
-        Task<CategoryWithAuctionsDto> GetCategoryWithAuctionsAsync(AuctionQueryParams queryParams, Guid categoryId);
+        Task<PaginatedResult<CategoryWithAuctionsDto>> GetCategoryWithAuctionsAsync(AuctionQueryParams queryParams, Guid categoryId);
 
         Task<Guid> CreateCategoryAsync(CreateCategoryDto dto);
 

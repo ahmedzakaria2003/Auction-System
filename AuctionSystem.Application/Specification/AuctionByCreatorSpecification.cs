@@ -19,7 +19,7 @@ public class AuctionByCreatorSpecification : BaseSpecification<Auction>
     (!specParams.MaxPrice.HasValue || a.StartingPrice <= specParams.MaxPrice.Value) &&
     (!specParams.IsEndingSoon.HasValue ||
         (specParams.IsEndingSoon.Value && !a.IsCanceled && a.EndTime > 
-        DateTime.UtcNow && a.EndTime <= DateTime.UtcNow.AddHours(4)))  /
+        DateTime.UtcNow && a.EndTime <= DateTime.UtcNow.AddHours(4)))  
     )
     {
         AddInclude(a => a.Images);

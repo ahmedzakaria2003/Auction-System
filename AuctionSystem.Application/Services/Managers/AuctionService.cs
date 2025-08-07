@@ -32,7 +32,6 @@ namespace AuctionSystem.Application.Services.Managers
             _hubContext = hubContext; 
         }
 
-        // دالة لإنشاء مزاد جديد
         public async Task<Guid> CreateAuctionAsync(CreateAuctionDto dto, Guid userId)
         {
             var seller = await _unitOfWork.Users.GetByIdAsync(userId);
@@ -158,15 +157,25 @@ namespace AuctionSystem.Application.Services.Managers
             return _mapper.Map<IEnumerable<AuctionListDto>>(auctions);
         }
 
-        public async Task<IEnumerable<AuctionListDto>> GetActiveAuctionsAsync(AuctionQueryParams queryParams)
+        public async Task<PaginatedResult<AuctionListDto>> GetActiveAuctionsAsync(AuctionQueryParams queryParams)
         {
             var spec = new AuctionWithFiltersSpecification(queryParams);
+            var countSpec = new AuctionWithFiltersSpecificationForCount(queryParams);
+            var totalCount = await _unitOfWork.Auctions.CountAsync(countSpec);
             var auctions = await _unitOfWork.Auctions.ListAsync(spec);
 
             if (auctions == null || !auctions.Any())
                 throw new NotFoundException("No active auctions found.");
 
-            return _mapper.Map<IEnumerable<AuctionListDto>>(auctions);
+          var data = _mapper.Map<IEnumerable<AuctionListDto>>(auctions);
+            return new PaginatedResult<AuctionListDto>
+            {
+                Data = data,
+                Count = totalCount,
+                PageNumber = queryParams.PageNumber,
+                PageSize = queryParams.PageSize
+            };
+
         }
 
         public async Task<AuctionDetailsDto?> GetAuctionDetailsAsync(Guid auctionId)
@@ -178,14 +187,28 @@ namespace AuctionSystem.Application.Services.Managers
             return _mapper.Map<AuctionDetailsDto>(auction);
         }
 
-        public async Task<IEnumerable<AuctionListDto>> GetAuctionsByCreatorAsync(AuctionQueryParams queryParams, Guid userId)
+        public async Task<PaginatedResult<AuctionListDto>> GetAuctionsByCreatorAsync(AuctionQueryParams queryParams, Guid userId)
         {
             var spec = new AuctionByCreatorSpecification(queryParams, userId);
+            var countSpec = new AuctionByCreatorSpecificationForCount(queryParams, userId);
+
+            var totalCount = await _unitOfWork.Auctions.CountAsync(countSpec);
             var auctions = await _unitOfWork.Auctions.ListAsync(spec);
+
             if (auctions == null || !auctions.Any())
                 throw new NotFoundException($"No auctions found for user with ID {userId}.");
-            return _mapper.Map<IEnumerable<AuctionListDto>>(auctions);
+
+            var data = _mapper.Map<IReadOnlyList<AuctionListDto>>(auctions);
+
+            return new PaginatedResult<AuctionListDto>
+            {
+                Data = data,
+                Count = totalCount,
+                PageNumber = queryParams.PageNumber,
+                PageSize = queryParams.PageSize
+            };
         }
+
 
         public async Task<bool> CancelAuctionAsync(Guid auctionId)
         {

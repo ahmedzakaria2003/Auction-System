@@ -87,10 +87,12 @@ namespace AuctionSystem.Application.Services.Managers
 
     return statistics;
 }
-        public async Task<IEnumerable<AuctionListDto>> GetSellersAuctions(AuctionQueryParams specParams, Guid userId , bool IsAdmin)
+        public async Task<PaginatedResult<AuctionListDto>> GetSellersAuctions(AuctionQueryParams specParams, Guid userId, bool isAdmin)
         {
-            var spec = new AuctionSpecification(specParams, userId , IsAdmin == true);
+            var spec = new AuctionSpecification(specParams, userId, isAdmin);
+            var countSpec = new AuctionSpecification(specParams, userId, isAdmin);
 
+            var totalCount = await _unitOfWork.Auctions.CountAsync(countSpec);
             var auctions = await _unitOfWork.Auctions.ListAsync(spec);
 
             if (auctions is null || !auctions.Any())
@@ -99,7 +101,14 @@ namespace AuctionSystem.Application.Services.Managers
             }
 
             var auctionDtos = _mapper.Map<IEnumerable<AuctionListDto>>(auctions);
-            return auctionDtos;
+
+            return new PaginatedResult<AuctionListDto>
+            {
+                Data = auctionDtos,
+                Count = totalCount,
+                PageNumber = specParams.PageNumber,
+                PageSize = specParams.PageSize
+            };
         }
 
 

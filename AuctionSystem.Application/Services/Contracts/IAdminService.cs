@@ -12,7 +12,7 @@ namespace AuctionSystem.Application.Services.Contracts
 {
     public interface IAdminService
     {
-        Task<IEnumerable<AuctionListDto>> GetSellersAuctions(AuctionQueryParams specParams, Guid userId , bool IsAdmin);
+        Task<PaginatedResult<AuctionListDto>> GetSellersAuctions(AuctionQueryParams specParams, Guid userId , bool IsAdmin);
         Task<AuctionStatisticsDto> GetAuctionStatisticsAsync();
         Task<List<UserDto>> GetAllUsersAsync();
         Task BanUserAsync(Guid userId);

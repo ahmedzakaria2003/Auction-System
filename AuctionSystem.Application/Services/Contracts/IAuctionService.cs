@@ -13,9 +13,9 @@ namespace AuctionSystem.Application.Services.Contracts
     public interface IAuctionService
     {
         Task<IEnumerable<AuctionListDto>> GetAllAuctionsAsync();
-        Task<IEnumerable<AuctionListDto>> GetActiveAuctionsAsync(AuctionQueryParams queryParams);
+        Task<PaginatedResult<AuctionListDto>> GetActiveAuctionsAsync(AuctionQueryParams queryParams);
         Task<AuctionDetailsDto?> GetAuctionDetailsAsync(Guid auctionId);
-        Task<IEnumerable<AuctionListDto>> GetAuctionsByCreatorAsync(AuctionQueryParams queryParams , Guid userId);
+        Task<PaginatedResult<AuctionListDto>> GetAuctionsByCreatorAsync(AuctionQueryParams queryParams, Guid userId);
         Task<Guid> CreateAuctionAsync(CreateAuctionDto dto , Guid userId);
         Task<bool> UpdateAuctionAsync(Guid auctionId, UpdateAuctionDto dto , Guid userId);
         Task<bool> DeleteAuctionAsync(Guid auctionId , Guid userId);

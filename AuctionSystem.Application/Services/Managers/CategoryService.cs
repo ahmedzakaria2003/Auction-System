@@ -1,4 +1,5 @@
 ﻿using AuctionSystem.Application.Contracts;
+using AuctionSystem.Application.DTOS.AuctionProfile;
 using AuctionSystem.Application.DTOS.CategoryProfile;
 using AuctionSystem.Application.Services.Contracts;
 using AuctionSystem.Application.Specification;
@@ -32,7 +33,7 @@ namespace AuctionSystem.Application.Services.Managers
             return _mapper.Map<IEnumerable<CategoryDto>>(categories);
         }
 
-        public async Task<CategoryWithAuctionsDto> GetCategoryWithAuctionsAsync(AuctionQueryParams queryParams, Guid categoryId)
+        public async Task<PaginatedResult<CategoryWithAuctionsDto>> GetCategoryWithAuctionsAsync(AuctionQueryParams queryParams, Guid categoryId)
         {
             // Get the category first
             var category = await _unitOfWork.Categories.GetByIdAsync(categoryId);
@@ -42,12 +43,35 @@ namespace AuctionSystem.Application.Services.Managers
 
             // Apply filtering on Auctions manually
             var spec = new AuctionsByCategorySpecification(queryParams, categoryId);
+            var countSpec = new AuctionsByCategorySpecificationForCount(queryParams, categoryId);
+            var totalCount = await _unitOfWork.Auctions.CountAsync(countSpec);
             var filteredAuctions = await _unitOfWork.Auctions.ListAsync(spec);
 
             // Inject the filtered auctions into category manually
             category.Auctions = filteredAuctions.ToList();
 
-            return _mapper.Map<CategoryWithAuctionsDto>(category);
+            var auctionsDto =   _mapper.Map<IReadOnlyList<AuctionListDto>>(filteredAuctions);
+           var pagedAuctions  = new PaginatedResult<AuctionListDto>
+            {
+                Data = auctionsDto,
+                Count = totalCount,
+                PageNumber = queryParams.PageNumber,
+                PageSize = queryParams.PageSize
+            };
+
+            var categoryDto = new CategoryWithAuctionsDto
+            {
+                Id = category.Id,
+                Name = category.Name,
+                PagedAuctions = pagedAuctions
+            };
+            return new PaginatedResult<CategoryWithAuctionsDto>
+            {
+                Data = new List<CategoryWithAuctionsDto> { categoryDto },
+                Count = 1, // Since we are returning a single category
+                PageNumber = queryParams.PageNumber,
+                PageSize = queryParams.PageSize
+            };
         }
 
 

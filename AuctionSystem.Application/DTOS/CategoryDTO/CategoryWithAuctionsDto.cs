@@ -1,4 +1,5 @@
 ﻿using AuctionSystem.Application.DTOS.AuctionProfile;
+using AuctionSystem.Shared;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,6 @@ namespace AuctionSystem.Application.DTOS.CategoryProfile
     {
         public Guid Id { get; set; }
         public string Name { get; set; } = default!;
-        public List<AuctionListDto> Auctions { get; set; } = new();
+        public PaginatedResult<AuctionListDto> PagedAuctions { get; set; } = default!;
     }
 }

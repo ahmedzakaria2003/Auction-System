@@ -15,7 +15,7 @@ namespace AuctionSystem.Application.MappingProfile
         {
             CreateMap<Category, CategoryDto>();
             CreateMap<Category, CategoryWithAuctionsDto>()
-              .ForMember(dest => dest.Auctions, opt => opt.MapFrom(src => src.Auctions));
+              .ForMember(dest => dest.PagedAuctions, opt => opt.MapFrom(src => src.Auctions));
             CreateMap<Category, UpdateCategoryDto>().ReverseMap();
             CreateMap<CreateCategoryDto, Category>();
 
