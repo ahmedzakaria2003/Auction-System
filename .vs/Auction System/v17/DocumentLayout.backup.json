@@ -1,0 +1,569 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Zeko\\source\\repos\\Auction System\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{4C9C0DEF-B015-4CCF-8361-FF38B73F5E3B}|AuctionSystem.Application\\AuctionSystem.Application.csproj|c:\\users\\zeko\\source\\repos\\auction system\\auctionsystem.application\\services\\managers\\sellerfeedbackservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4C9C0DEF-B015-4CCF-8361-FF38B73F5E3B}|AuctionSystem.Application\\AuctionSystem.Application.csproj|solutionrelative:auctionsystem.application\\services\\managers\\sellerfeedbackservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B88C0733-1492-4B5F-918A-31A9A27BA218}|AuctionSystem.Presentation\\AuctionSystem.Presentation.csproj|c:\\users\\zeko\\source\\repos\\auction system\\auctionsystem.presentation\\controllers\\sellerfeedbackcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B88C0733-1492-4B5F-918A-31A9A27BA218}|AuctionSystem.Presentation\\AuctionSystem.Presentation.csproj|solutionrelative:auctionsystem.presentation\\controllers\\sellerfeedbackcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4C9C0DEF-B015-4CCF-8361-FF38B73F5E3B}|AuctionSystem.Application\\AuctionSystem.Application.csproj|c:\\users\\zeko\\source\\repos\\auction system\\auctionsystem.application\\mappingprofile\\auctionprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4C9C0DEF-B015-4CCF-8361-FF38B73F5E3B}|AuctionSystem.Application\\AuctionSystem.Application.csproj|solutionrelative:auctionsystem.application\\mappingprofile\\auctionprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4C9C0DEF-B015-4CCF-8361-FF38B73F5E3B}|AuctionSystem.Application\\AuctionSystem.Application.csproj|c:\\users\\zeko\\source\\repos\\auction system\\auctionsystem.application\\dtos\\auctiondto\\auctiondetailsdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4C9C0DEF-B015-4CCF-8361-FF38B73F5E3B}|AuctionSystem.Application\\AuctionSystem.Application.csproj|solutionrelative:auctionsystem.application\\dtos\\auctiondto\\auctiondetailsdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4C9C0DEF-B015-4CCF-8361-FF38B73F5E3B}|AuctionSystem.Application\\AuctionSystem.Application.csproj|c:\\users\\zeko\\source\\repos\\auction system\\auctionsystem.application\\contracts\\isellerfeedbackrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4C9C0DEF-B015-4CCF-8361-FF38B73F5E3B}|AuctionSystem.Application\\AuctionSystem.Application.csproj|solutionrelative:auctionsystem.application\\contracts\\isellerfeedbackrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C6A00734-F7B6-4AA0-A4AB-E70348E397CE}|AuctionSystem.Infrastructure\\AuctionSystem.Infrastructure.csproj|c:\\users\\zeko\\source\\repos\\auction system\\auctionsystem.infrastructure\\repositories\\sellerfeedbackrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C6A00734-F7B6-4AA0-A4AB-E70348E397CE}|AuctionSystem.Infrastructure\\AuctionSystem.Infrastructure.csproj|solutionrelative:auctionsystem.infrastructure\\repositories\\sellerfeedbackrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4C9C0DEF-B015-4CCF-8361-FF38B73F5E3B}|AuctionSystem.Application\\AuctionSystem.Application.csproj|c:\\users\\zeko\\source\\repos\\auction system\\auctionsystem.application\\services\\contracts\\isellerfeedbackservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4C9C0DEF-B015-4CCF-8361-FF38B73F5E3B}|AuctionSystem.Application\\AuctionSystem.Application.csproj|solutionrelative:auctionsystem.application\\services\\contracts\\isellerfeedbackservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BE5CC67B-30A7-4EC9-8837-4D9C98ED6641}|AuctionSystem.Domain\\AuctionSystem.Domain.csproj|c:\\users\\zeko\\source\\repos\\auction system\\auctionsystem.domain\\entities\\sellerfeedback.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BE5CC67B-30A7-4EC9-8837-4D9C98ED6641}|AuctionSystem.Domain\\AuctionSystem.Domain.csproj|solutionrelative:auctionsystem.domain\\entities\\sellerfeedback.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4C9C0DEF-B015-4CCF-8361-FF38B73F5E3B}|AuctionSystem.Application\\AuctionSystem.Application.csproj|c:\\users\\zeko\\source\\repos\\auction system\\auctionsystem.application\\services\\managers\\payementservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4C9C0DEF-B015-4CCF-8361-FF38B73F5E3B}|AuctionSystem.Application\\AuctionSystem.Application.csproj|solutionrelative:auctionsystem.application\\services\\managers\\payementservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4C9C0DEF-B015-4CCF-8361-FF38B73F5E3B}|AuctionSystem.Application\\AuctionSystem.Application.csproj|c:\\users\\zeko\\source\\repos\\auction system\\auctionsystem.application\\services\\managers\\tokenservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4C9C0DEF-B015-4CCF-8361-FF38B73F5E3B}|AuctionSystem.Application\\AuctionSystem.Application.csproj|solutionrelative:auctionsystem.application\\services\\managers\\tokenservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BE5CC67B-30A7-4EC9-8837-4D9C98ED6641}|AuctionSystem.Domain\\AuctionSystem.Domain.csproj|c:\\users\\zeko\\source\\repos\\auction system\\auctionsystem.domain\\entities\\applicationuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BE5CC67B-30A7-4EC9-8837-4D9C98ED6641}|AuctionSystem.Domain\\AuctionSystem.Domain.csproj|solutionrelative:auctionsystem.domain\\entities\\applicationuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4C9C0DEF-B015-4CCF-8361-FF38B73F5E3B}|AuctionSystem.Application\\AuctionSystem.Application.csproj|c:\\users\\zeko\\source\\repos\\auction system\\auctionsystem.application\\services\\managers\\depositservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4C9C0DEF-B015-4CCF-8361-FF38B73F5E3B}|AuctionSystem.Application\\AuctionSystem.Application.csproj|solutionrelative:auctionsystem.application\\services\\managers\\depositservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4C9C0DEF-B015-4CCF-8361-FF38B73F5E3B}|AuctionSystem.Application\\AuctionSystem.Application.csproj|c:\\users\\zeko\\source\\repos\\auction system\\auctionsystem.application\\services\\managers\\auctionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4C9C0DEF-B015-4CCF-8361-FF38B73F5E3B}|AuctionSystem.Application\\AuctionSystem.Application.csproj|solutionrelative:auctionsystem.application\\services\\managers\\auctionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B88C0733-1492-4B5F-918A-31A9A27BA218}|AuctionSystem.Presentation\\AuctionSystem.Presentation.csproj|c:\\users\\zeko\\source\\repos\\auction system\\auctionsystem.presentation\\controllers\\paymentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B88C0733-1492-4B5F-918A-31A9A27BA218}|AuctionSystem.Presentation\\AuctionSystem.Presentation.csproj|solutionrelative:auctionsystem.presentation\\controllers\\paymentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B88C0733-1492-4B5F-918A-31A9A27BA218}|AuctionSystem.Presentation\\AuctionSystem.Presentation.csproj|c:\\users\\zeko\\source\\repos\\auction system\\auctionsystem.presentation\\controllers\\profilecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B88C0733-1492-4B5F-918A-31A9A27BA218}|AuctionSystem.Presentation\\AuctionSystem.Presentation.csproj|solutionrelative:auctionsystem.presentation\\controllers\\profilecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4C9C0DEF-B015-4CCF-8361-FF38B73F5E3B}|AuctionSystem.Application\\AuctionSystem.Application.csproj|c:\\users\\zeko\\source\\repos\\auction system\\auctionsystem.application\\dtos\\sellerfeedbackdto\\sellerfeedbackdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4C9C0DEF-B015-4CCF-8361-FF38B73F5E3B}|AuctionSystem.Application\\AuctionSystem.Application.csproj|solutionrelative:auctionsystem.application\\dtos\\sellerfeedbackdto\\sellerfeedbackdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4C9C0DEF-B015-4CCF-8361-FF38B73F5E3B}|AuctionSystem.Application\\AuctionSystem.Application.csproj|c:\\users\\zeko\\source\\repos\\auction system\\auctionsystem.application\\dtos\\sellerfeedbackdto\\addfeedbackrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4C9C0DEF-B015-4CCF-8361-FF38B73F5E3B}|AuctionSystem.Application\\AuctionSystem.Application.csproj|solutionrelative:auctionsystem.application\\dtos\\sellerfeedbackdto\\addfeedbackrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4C9C0DEF-B015-4CCF-8361-FF38B73F5E3B}|AuctionSystem.Application\\AuctionSystem.Application.csproj|c:\\users\\zeko\\source\\repos\\auction system\\auctionsystem.application\\services\\managers\\profileservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4C9C0DEF-B015-4CCF-8361-FF38B73F5E3B}|AuctionSystem.Application\\AuctionSystem.Application.csproj|solutionrelative:auctionsystem.application\\services\\managers\\profileservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4C9C0DEF-B015-4CCF-8361-FF38B73F5E3B}|AuctionSystem.Application\\AuctionSystem.Application.csproj|c:\\users\\zeko\\source\\repos\\auction system\\auctionsystem.application\\dtos\\profiledto\\auctionwondto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4C9C0DEF-B015-4CCF-8361-FF38B73F5E3B}|AuctionSystem.Application\\AuctionSystem.Application.csproj|solutionrelative:auctionsystem.application\\dtos\\profiledto\\auctionwondto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0045B0C2-605B-4944-83B3-4A2C82A817EB}|AuctionSystem.Shared\\AuctionSystem.Shared.csproj|c:\\users\\zeko\\source\\repos\\auction system\\auctionsystem.shared\\signalr\\auctionhub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0045B0C2-605B-4944-83B3-4A2C82A817EB}|AuctionSystem.Shared\\AuctionSystem.Shared.csproj|solutionrelative:auctionsystem.shared\\signalr\\auctionhub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4C9C0DEF-B015-4CCF-8361-FF38B73F5E3B}|AuctionSystem.Application\\AuctionSystem.Application.csproj|c:\\users\\zeko\\source\\repos\\auction system\\auctionsystem.application\\services\\managers\\bidservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4C9C0DEF-B015-4CCF-8361-FF38B73F5E3B}|AuctionSystem.Application\\AuctionSystem.Application.csproj|solutionrelative:auctionsystem.application\\services\\managers\\bidservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C6A00734-F7B6-4AA0-A4AB-E70348E397CE}|AuctionSystem.Infrastructure\\AuctionSystem.Infrastructure.csproj|c:\\users\\zeko\\source\\repos\\auction system\\auctionsystem.infrastructure\\repositories\\bidrepoistory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C6A00734-F7B6-4AA0-A4AB-E70348E397CE}|AuctionSystem.Infrastructure\\AuctionSystem.Infrastructure.csproj|solutionrelative:auctionsystem.infrastructure\\repositories\\bidrepoistory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BE5CC67B-30A7-4EC9-8837-4D9C98ED6641}|AuctionSystem.Domain\\AuctionSystem.Domain.csproj|c:\\users\\zeko\\source\\repos\\auction system\\auctionsystem.domain\\entities\\auction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BE5CC67B-30A7-4EC9-8837-4D9C98ED6641}|AuctionSystem.Domain\\AuctionSystem.Domain.csproj|solutionrelative:auctionsystem.domain\\entities\\auction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4C9C0DEF-B015-4CCF-8361-FF38B73F5E3B}|AuctionSystem.Application\\AuctionSystem.Application.csproj|c:\\users\\zeko\\source\\repos\\auction system\\auctionsystem.application\\specification\\auctionbycreatorspecification.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4C9C0DEF-B015-4CCF-8361-FF38B73F5E3B}|AuctionSystem.Application\\AuctionSystem.Application.csproj|solutionrelative:auctionsystem.application\\specification\\auctionbycreatorspecification.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4C9C0DEF-B015-4CCF-8361-FF38B73F5E3B}|AuctionSystem.Application\\AuctionSystem.Application.csproj|c:\\users\\zeko\\source\\repos\\auction system\\auctionsystem.application\\specification\\allauctionspecification.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4C9C0DEF-B015-4CCF-8361-FF38B73F5E3B}|AuctionSystem.Application\\AuctionSystem.Application.csproj|solutionrelative:auctionsystem.application\\specification\\allauctionspecification.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4C9C0DEF-B015-4CCF-8361-FF38B73F5E3B}|AuctionSystem.Application\\AuctionSystem.Application.csproj|c:\\users\\zeko\\source\\repos\\auction system\\auctionsystem.application\\specification\\allauctionspecificationscount.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4C9C0DEF-B015-4CCF-8361-FF38B73F5E3B}|AuctionSystem.Application\\AuctionSystem.Application.csproj|solutionrelative:auctionsystem.application\\specification\\allauctionspecificationscount.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4C9C0DEF-B015-4CCF-8361-FF38B73F5E3B}|AuctionSystem.Application\\AuctionSystem.Application.csproj|c:\\users\\zeko\\source\\repos\\auction system\\auctionsystem.application\\dtos\\accountdto\\registerdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4C9C0DEF-B015-4CCF-8361-FF38B73F5E3B}|AuctionSystem.Application\\AuctionSystem.Application.csproj|solutionrelative:auctionsystem.application\\dtos\\accountdto\\registerdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4C9C0DEF-B015-4CCF-8361-FF38B73F5E3B}|AuctionSystem.Application\\AuctionSystem.Application.csproj|c:\\users\\zeko\\source\\repos\\auction system\\auctionsystem.application\\dtos\\accountdto\\registerresultdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4C9C0DEF-B015-4CCF-8361-FF38B73F5E3B}|AuctionSystem.Application\\AuctionSystem.Application.csproj|solutionrelative:auctionsystem.application\\dtos\\accountdto\\registerresultdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B88C0733-1492-4B5F-918A-31A9A27BA218}|AuctionSystem.Presentation\\AuctionSystem.Presentation.csproj|c:\\users\\zeko\\source\\repos\\auction system\\auctionsystem.presentation\\controllers\\authenticationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B88C0733-1492-4B5F-918A-31A9A27BA218}|AuctionSystem.Presentation\\AuctionSystem.Presentation.csproj|solutionrelative:auctionsystem.presentation\\controllers\\authenticationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4C9C0DEF-B015-4CCF-8361-FF38B73F5E3B}|AuctionSystem.Application\\AuctionSystem.Application.csproj|c:\\users\\zeko\\source\\repos\\auction system\\auctionsystem.application\\dtos\\paymentdto\\paymentintentdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4C9C0DEF-B015-4CCF-8361-FF38B73F5E3B}|AuctionSystem.Application\\AuctionSystem.Application.csproj|solutionrelative:auctionsystem.application\\dtos\\paymentdto\\paymentintentdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4C9C0DEF-B015-4CCF-8361-FF38B73F5E3B}|AuctionSystem.Application\\AuctionSystem.Application.csproj|c:\\users\\zeko\\source\\repos\\auction system\\auctionsystem.application\\dtos\\profiledto\\activebiddingdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4C9C0DEF-B015-4CCF-8361-FF38B73F5E3B}|AuctionSystem.Application\\AuctionSystem.Application.csproj|solutionrelative:auctionsystem.application\\dtos\\profiledto\\activebiddingdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 8,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "PayementService.cs",
+              "DocumentMoniker": "C:\\Users\\Zeko\\source\\repos\\Auction System\\AuctionSystem.Application\\Services\\Managers\\PayementService.cs",
+              "RelativeDocumentMoniker": "AuctionSystem.Application\\Services\\Managers\\PayementService.cs",
+              "ToolTip": "C:\\Users\\Zeko\\source\\repos\\Auction System\\AuctionSystem.Application\\Services\\Managers\\PayementService.cs",
+              "RelativeToolTip": "AuctionSystem.Application\\Services\\Managers\\PayementService.cs",
+              "ViewState": "AgIAABcAAAAAAAAAAAAuwDoAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-17T01:25:29.319Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "DepositService.cs",
+              "DocumentMoniker": "C:\\Users\\Zeko\\source\\repos\\Auction System\\AuctionSystem.Application\\Services\\Managers\\DepositService.cs",
+              "RelativeDocumentMoniker": "AuctionSystem.Application\\Services\\Managers\\DepositService.cs",
+              "ToolTip": "C:\\Users\\Zeko\\source\\repos\\Auction System\\AuctionSystem.Application\\Services\\Managers\\DepositService.cs",
+              "RelativeToolTip": "AuctionSystem.Application\\Services\\Managers\\DepositService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAG0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-20T07:04:15.678Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:3:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:2:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ISellerFeedbackRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Zeko\\source\\repos\\Auction System\\AuctionSystem.Application\\Contracts\\ISellerFeedbackRepository.cs",
+              "RelativeDocumentMoniker": "AuctionSystem.Application\\Contracts\\ISellerFeedbackRepository.cs",
+              "ToolTip": "C:\\Users\\Zeko\\source\\repos\\Auction System\\AuctionSystem.Application\\Contracts\\ISellerFeedbackRepository.cs",
+              "RelativeToolTip": "AuctionSystem.Application\\Contracts\\ISellerFeedbackRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAABLAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-20T08:14:29.652Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "SellerFeedbackRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Zeko\\source\\repos\\Auction System\\AuctionSystem.Infrastructure\\Repositories\\SellerFeedbackRepository.cs",
+              "RelativeDocumentMoniker": "AuctionSystem.Infrastructure\\Repositories\\SellerFeedbackRepository.cs",
+              "ToolTip": "C:\\Users\\Zeko\\source\\repos\\Auction System\\AuctionSystem.Infrastructure\\Repositories\\SellerFeedbackRepository.cs",
+              "RelativeToolTip": "AuctionSystem.Infrastructure\\Repositories\\SellerFeedbackRepository.cs",
+              "ViewState": "AgIAABsAAAAAAAAAAAAYwCMAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-20T08:07:33.534Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "SellerFeedbackService.cs",
+              "DocumentMoniker": "C:\\Users\\Zeko\\source\\repos\\Auction System\\AuctionSystem.Application\\Services\\Managers\\SellerFeedbackService.cs",
+              "RelativeDocumentMoniker": "AuctionSystem.Application\\Services\\Managers\\SellerFeedbackService.cs",
+              "ToolTip": "C:\\Users\\Zeko\\source\\repos\\Auction System\\AuctionSystem.Application\\Services\\Managers\\SellerFeedbackService.cs",
+              "RelativeToolTip": "AuctionSystem.Application\\Services\\Managers\\SellerFeedbackService.cs",
+              "ViewState": "AgIAABkAAAAAAAAAAAAAADUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-17T01:27:49.965Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ISellerFeedbackService.cs",
+              "DocumentMoniker": "C:\\Users\\Zeko\\source\\repos\\Auction System\\AuctionSystem.Application\\Services\\Contracts\\ISellerFeedbackService.cs",
+              "RelativeDocumentMoniker": "AuctionSystem.Application\\Services\\Contracts\\ISellerFeedbackService.cs",
+              "ToolTip": "C:\\Users\\Zeko\\source\\repos\\Auction System\\AuctionSystem.Application\\Services\\Contracts\\ISellerFeedbackService.cs",
+              "RelativeToolTip": "AuctionSystem.Application\\Services\\Contracts\\ISellerFeedbackService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAABJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-20T08:16:27.409Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "AuctionProfile.cs",
+              "DocumentMoniker": "C:\\Users\\Zeko\\source\\repos\\Auction System\\AuctionSystem.Application\\MappingProfile\\AuctionProfile.cs",
+              "RelativeDocumentMoniker": "AuctionSystem.Application\\MappingProfile\\AuctionProfile.cs",
+              "ToolTip": "C:\\Users\\Zeko\\source\\repos\\Auction System\\AuctionSystem.Application\\MappingProfile\\AuctionProfile.cs",
+              "RelativeToolTip": "AuctionSystem.Application\\MappingProfile\\AuctionProfile.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAAQwBwAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-20T09:53:00.285Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "SellerFeedbackController.cs",
+              "DocumentMoniker": "C:\\Users\\Zeko\\source\\repos\\Auction System\\AuctionSystem.Presentation\\Controllers\\SellerFeedbackController.cs",
+              "RelativeDocumentMoniker": "AuctionSystem.Presentation\\Controllers\\SellerFeedbackController.cs",
+              "ToolTip": "C:\\Users\\Zeko\\source\\repos\\Auction System\\AuctionSystem.Presentation\\Controllers\\SellerFeedbackController.cs",
+              "RelativeToolTip": "AuctionSystem.Presentation\\Controllers\\SellerFeedbackController.cs",
+              "ViewState": "AgIAACQAAAAAAAAAAAAYwA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-20T04:42:35.796Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "AuctionDetailsDto.cs",
+              "DocumentMoniker": "C:\\Users\\Zeko\\source\\repos\\Auction System\\AuctionSystem.Application\\DTOS\\AuctionDTO\\AuctionDetailsDto.cs",
+              "RelativeDocumentMoniker": "AuctionSystem.Application\\DTOS\\AuctionDTO\\AuctionDetailsDto.cs",
+              "ToolTip": "C:\\Users\\Zeko\\source\\repos\\Auction System\\AuctionSystem.Application\\DTOS\\AuctionDTO\\AuctionDetailsDto.cs",
+              "RelativeToolTip": "AuctionSystem.Application\\DTOS\\AuctionDTO\\AuctionDetailsDto.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAABQAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-19T03:56:31.367Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "SellerFeedback.cs",
+              "DocumentMoniker": "C:\\Users\\Zeko\\source\\repos\\Auction System\\AuctionSystem.Domain\\Entities\\SellerFeedback.cs",
+              "RelativeDocumentMoniker": "AuctionSystem.Domain\\Entities\\SellerFeedback.cs",
+              "ToolTip": "C:\\Users\\Zeko\\source\\repos\\Auction System\\AuctionSystem.Domain\\Entities\\SellerFeedback.cs",
+              "RelativeToolTip": "AuctionSystem.Domain\\Entities\\SellerFeedback.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-20T08:13:03.195Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "TokenService.cs",
+              "DocumentMoniker": "C:\\Users\\Zeko\\source\\repos\\Auction System\\AuctionSystem.Application\\Services\\Managers\\TokenService.cs",
+              "RelativeDocumentMoniker": "AuctionSystem.Application\\Services\\Managers\\TokenService.cs",
+              "ToolTip": "C:\\Users\\Zeko\\source\\repos\\Auction System\\AuctionSystem.Application\\Services\\Managers\\TokenService.cs",
+              "RelativeToolTip": "AuctionSystem.Application\\Services\\Managers\\TokenService.cs",
+              "ViewState": "AgIAAB0AAAAAAAAAAAAuwCQAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-20T07:29:14.799Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "SellerFeedbackDto.cs",
+              "DocumentMoniker": "C:\\Users\\Zeko\\source\\repos\\Auction System\\AuctionSystem.Application\\DTOS\\SellerFeedbackDTO\\SellerFeedbackDto.cs",
+              "RelativeDocumentMoniker": "AuctionSystem.Application\\DTOS\\SellerFeedbackDTO\\SellerFeedbackDto.cs",
+              "ToolTip": "C:\\Users\\Zeko\\source\\repos\\Auction System\\AuctionSystem.Application\\DTOS\\SellerFeedbackDTO\\SellerFeedbackDto.cs",
+              "RelativeToolTip": "AuctionSystem.Application\\DTOS\\SellerFeedbackDTO\\SellerFeedbackDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-17T01:28:39.71Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "ProfileService.cs",
+              "DocumentMoniker": "C:\\Users\\Zeko\\source\\repos\\Auction System\\AuctionSystem.Application\\Services\\Managers\\ProfileService.cs",
+              "RelativeDocumentMoniker": "AuctionSystem.Application\\Services\\Managers\\ProfileService.cs",
+              "ToolTip": "C:\\Users\\Zeko\\source\\repos\\Auction System\\AuctionSystem.Application\\Services\\Managers\\ProfileService.cs",
+              "RelativeToolTip": "AuctionSystem.Application\\Services\\Managers\\ProfileService.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAABsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-16T21:30:41.725Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "ProfileController.cs",
+              "DocumentMoniker": "C:\\Users\\Zeko\\source\\repos\\Auction System\\AuctionSystem.Presentation\\Controllers\\ProfileController.cs",
+              "RelativeDocumentMoniker": "AuctionSystem.Presentation\\Controllers\\ProfileController.cs",
+              "ToolTip": "C:\\Users\\Zeko\\source\\repos\\Auction System\\AuctionSystem.Presentation\\Controllers\\ProfileController.cs",
+              "RelativeToolTip": "AuctionSystem.Presentation\\Controllers\\ProfileController.cs",
+              "ViewState": "AgIAABEAAAAAAAAAAAAAACEAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-16T21:32:32.572Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "AuctionWonDto.cs",
+              "DocumentMoniker": "C:\\Users\\Zeko\\source\\repos\\Auction System\\AuctionSystem.Application\\DTOS\\ProfileDTO\\AuctionWonDto.cs",
+              "RelativeDocumentMoniker": "AuctionSystem.Application\\DTOS\\ProfileDTO\\AuctionWonDto.cs",
+              "ToolTip": "C:\\Users\\Zeko\\source\\repos\\Auction System\\AuctionSystem.Application\\DTOS\\ProfileDTO\\AuctionWonDto.cs",
+              "RelativeToolTip": "AuctionSystem.Application\\DTOS\\ProfileDTO\\AuctionWonDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-16T21:34:00.666Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "ApplicationUser.cs",
+              "DocumentMoniker": "C:\\Users\\Zeko\\source\\repos\\Auction System\\AuctionSystem.Domain\\Entities\\ApplicationUser.cs",
+              "RelativeDocumentMoniker": "AuctionSystem.Domain\\Entities\\ApplicationUser.cs",
+              "ToolTip": "C:\\Users\\Zeko\\source\\repos\\Auction System\\AuctionSystem.Domain\\Entities\\ApplicationUser.cs",
+              "RelativeToolTip": "AuctionSystem.Domain\\Entities\\ApplicationUser.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-20T07:21:05.86Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "AuctionService.cs",
+              "DocumentMoniker": "C:\\Users\\Zeko\\source\\repos\\Auction System\\AuctionSystem.Application\\Services\\Managers\\AuctionService.cs",
+              "RelativeDocumentMoniker": "AuctionSystem.Application\\Services\\Managers\\AuctionService.cs",
+              "ToolTip": "C:\\Users\\Zeko\\source\\repos\\Auction System\\AuctionSystem.Application\\Services\\Managers\\AuctionService.cs",
+              "RelativeToolTip": "AuctionSystem.Application\\Services\\Managers\\AuctionService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-19T02:56:02.019Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "PaymentController.cs",
+              "DocumentMoniker": "C:\\Users\\Zeko\\source\\repos\\Auction System\\AuctionSystem.Presentation\\Controllers\\PaymentController.cs",
+              "RelativeDocumentMoniker": "AuctionSystem.Presentation\\Controllers\\PaymentController.cs",
+              "ToolTip": "C:\\Users\\Zeko\\source\\repos\\Auction System\\AuctionSystem.Presentation\\Controllers\\PaymentController.cs",
+              "RelativeToolTip": "AuctionSystem.Presentation\\Controllers\\PaymentController.cs",
+              "ViewState": "AgIAACgAAAAAAAAAAAAAADkAAABbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-17T01:38:52.997Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "AddFeedbackRequest.cs",
+              "DocumentMoniker": "C:\\Users\\Zeko\\source\\repos\\Auction System\\AuctionSystem.Application\\DTOS\\SellerFeedbackDTO\\AddFeedbackRequest.cs",
+              "RelativeDocumentMoniker": "AuctionSystem.Application\\DTOS\\SellerFeedbackDTO\\AddFeedbackRequest.cs",
+              "ToolTip": "C:\\Users\\Zeko\\source\\repos\\Auction System\\AuctionSystem.Application\\DTOS\\SellerFeedbackDTO\\AddFeedbackRequest.cs",
+              "RelativeToolTip": "AuctionSystem.Application\\DTOS\\SellerFeedbackDTO\\AddFeedbackRequest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-17T01:28:10.387Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "AllAuctionSpecification.cs",
+              "DocumentMoniker": "C:\\Users\\Zeko\\source\\repos\\Auction System\\AuctionSystem.Application\\Specification\\AllAuctionSpecification.cs",
+              "RelativeDocumentMoniker": "AuctionSystem.Application\\Specification\\AllAuctionSpecification.cs",
+              "ToolTip": "C:\\Users\\Zeko\\source\\repos\\Auction System\\AuctionSystem.Application\\Specification\\AllAuctionSpecification.cs",
+              "RelativeToolTip": "AuctionSystem.Application\\Specification\\AllAuctionSpecification.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-19T02:56:57.194Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "AuctionHub.cs",
+              "DocumentMoniker": "C:\\Users\\Zeko\\source\\repos\\Auction System\\AuctionSystem.Shared\\SignalR\\AuctionHub.cs",
+              "RelativeDocumentMoniker": "AuctionSystem.Shared\\SignalR\\AuctionHub.cs",
+              "ToolTip": "C:\\Users\\Zeko\\source\\repos\\Auction System\\AuctionSystem.Shared\\SignalR\\AuctionHub.cs",
+              "RelativeToolTip": "AuctionSystem.Shared\\SignalR\\AuctionHub.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-19T03:26:51.273Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "BidService.cs",
+              "DocumentMoniker": "C:\\Users\\Zeko\\source\\repos\\Auction System\\AuctionSystem.Application\\Services\\Managers\\BidService.cs",
+              "RelativeDocumentMoniker": "AuctionSystem.Application\\Services\\Managers\\BidService.cs",
+              "ToolTip": "C:\\Users\\Zeko\\source\\repos\\Auction System\\AuctionSystem.Application\\Services\\Managers\\BidService.cs",
+              "RelativeToolTip": "AuctionSystem.Application\\Services\\Managers\\BidService.cs",
+              "ViewState": "AgIAADUAAAAAAAAAAAAAACAAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-19T03:27:29.827Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "Auction.cs",
+              "DocumentMoniker": "C:\\Users\\Zeko\\source\\repos\\Auction System\\AuctionSystem.Domain\\Entities\\Auction.cs",
+              "RelativeDocumentMoniker": "AuctionSystem.Domain\\Entities\\Auction.cs",
+              "ToolTip": "C:\\Users\\Zeko\\source\\repos\\Auction System\\AuctionSystem.Domain\\Entities\\Auction.cs",
+              "RelativeToolTip": "AuctionSystem.Domain\\Entities\\Auction.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-19T03:54:04.171Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "BidRepoistory.cs",
+              "DocumentMoniker": "C:\\Users\\Zeko\\source\\repos\\Auction System\\AuctionSystem.Infrastructure\\Repositories\\BidRepoistory.cs",
+              "RelativeDocumentMoniker": "AuctionSystem.Infrastructure\\Repositories\\BidRepoistory.cs",
+              "ToolTip": "C:\\Users\\Zeko\\source\\repos\\Auction System\\AuctionSystem.Infrastructure\\Repositories\\BidRepoistory.cs",
+              "RelativeToolTip": "AuctionSystem.Infrastructure\\Repositories\\BidRepoistory.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-19T04:05:01.086Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "AllAuctionSpecificationsCount.cs",
+              "DocumentMoniker": "C:\\Users\\Zeko\\source\\repos\\Auction System\\AuctionSystem.Application\\Specification\\AllAuctionSpecificationsCount.cs",
+              "RelativeDocumentMoniker": "AuctionSystem.Application\\Specification\\AllAuctionSpecificationsCount.cs",
+              "ToolTip": "C:\\Users\\Zeko\\source\\repos\\Auction System\\AuctionSystem.Application\\Specification\\AllAuctionSpecificationsCount.cs",
+              "RelativeToolTip": "AuctionSystem.Application\\Specification\\AllAuctionSpecificationsCount.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-19T02:55:33.494Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "AuctionByCreatorSpecification.cs",
+              "DocumentMoniker": "C:\\Users\\Zeko\\source\\repos\\Auction System\\AuctionSystem.Application\\Specification\\AuctionByCreatorSpecification.cs",
+              "RelativeDocumentMoniker": "AuctionSystem.Application\\Specification\\AuctionByCreatorSpecification.cs",
+              "ToolTip": "C:\\Users\\Zeko\\source\\repos\\Auction System\\AuctionSystem.Application\\Specification\\AuctionByCreatorSpecification.cs",
+              "RelativeToolTip": "AuctionSystem.Application\\Specification\\AuctionByCreatorSpecification.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAABcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-19T02:54:58.846Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "RegisterDto.cs",
+              "DocumentMoniker": "C:\\Users\\Zeko\\source\\repos\\Auction System\\AuctionSystem.Application\\DTOS\\AccountDTO\\RegisterDto.cs",
+              "RelativeDocumentMoniker": "AuctionSystem.Application\\DTOS\\AccountDTO\\RegisterDto.cs",
+              "ToolTip": "C:\\Users\\Zeko\\source\\repos\\Auction System\\AuctionSystem.Application\\DTOS\\AccountDTO\\RegisterDto.cs",
+              "RelativeToolTip": "AuctionSystem.Application\\DTOS\\AccountDTO\\RegisterDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-18T04:18:44.526Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "PaymentIntentDTO.cs",
+              "DocumentMoniker": "C:\\Users\\Zeko\\source\\repos\\Auction System\\AuctionSystem.Application\\DTOS\\PaymentDTO\\PaymentIntentDTO.cs",
+              "RelativeDocumentMoniker": "AuctionSystem.Application\\DTOS\\PaymentDTO\\PaymentIntentDTO.cs",
+              "ToolTip": "C:\\Users\\Zeko\\source\\repos\\Auction System\\AuctionSystem.Application\\DTOS\\PaymentDTO\\PaymentIntentDTO.cs",
+              "RelativeToolTip": "AuctionSystem.Application\\DTOS\\PaymentDTO\\PaymentIntentDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-17T01:25:49.052Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "AuthenticationController.cs",
+              "DocumentMoniker": "C:\\Users\\Zeko\\source\\repos\\Auction System\\AuctionSystem.Presentation\\Controllers\\AuthenticationController.cs",
+              "RelativeDocumentMoniker": "AuctionSystem.Presentation\\Controllers\\AuthenticationController.cs",
+              "ToolTip": "C:\\Users\\Zeko\\source\\repos\\Auction System\\AuctionSystem.Presentation\\Controllers\\AuthenticationController.cs",
+              "RelativeToolTip": "AuctionSystem.Presentation\\Controllers\\AuthenticationController.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAAB0AAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-18T01:44:28Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "RegisterResultDto.cs",
+              "DocumentMoniker": "C:\\Users\\Zeko\\source\\repos\\Auction System\\AuctionSystem.Application\\DTOS\\AccountDTO\\RegisterResultDto.cs",
+              "RelativeDocumentMoniker": "AuctionSystem.Application\\DTOS\\AccountDTO\\RegisterResultDto.cs",
+              "ToolTip": "C:\\Users\\Zeko\\source\\repos\\Auction System\\AuctionSystem.Application\\DTOS\\AccountDTO\\RegisterResultDto.cs",
+              "RelativeToolTip": "AuctionSystem.Application\\DTOS\\AccountDTO\\RegisterResultDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-18T04:23:33.917Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "ActiveBiddingDto.cs",
+              "DocumentMoniker": "C:\\Users\\Zeko\\source\\repos\\Auction System\\AuctionSystem.Application\\DTOS\\ProfileDTO\\ActiveBiddingDto.cs",
+              "RelativeDocumentMoniker": "AuctionSystem.Application\\DTOS\\ProfileDTO\\ActiveBiddingDto.cs",
+              "ToolTip": "C:\\Users\\Zeko\\source\\repos\\Auction System\\AuctionSystem.Application\\DTOS\\ProfileDTO\\ActiveBiddingDto.cs",
+              "RelativeToolTip": "AuctionSystem.Application\\DTOS\\ProfileDTO\\ActiveBiddingDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAA1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-16T21:30:20.356Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
