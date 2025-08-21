@@ -1,0 +1,138 @@
+{
+  "version": 3,
+  "targets": {
+    "net8.0": {
+      "AuctionSystem.Application/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "AuctionSystem.Domain": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/AuctionSystem.Application.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/AuctionSystem.Application.dll": {}
+        }
+      },
+      "AuctionSystem.Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "compile": {
+          "bin/placeholder/AuctionSystem.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/AuctionSystem.Domain.dll": {}
+        }
+      },
+      "AuctionSystem.Infrastructure/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "AuctionSystem.Application": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/AuctionSystem.Infrastructure.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/AuctionSystem.Infrastructure.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "AuctionSystem.Application/1.0.0": {
+      "type": "project",
+      "path": "../AuctionSystem.Application/AuctionSystem.Application.csproj",
+      "msbuildProject": "../AuctionSystem.Application/AuctionSystem.Application.csproj"
+    },
+    "AuctionSystem.Domain/1.0.0": {
+      "type": "project",
+      "path": "../AuctionSystem.Domain/AuctionSystem.Domain.csproj",
+      "msbuildProject": "../AuctionSystem.Domain/AuctionSystem.Domain.csproj"
+    },
+    "AuctionSystem.Infrastructure/1.0.0": {
+      "type": "project",
+      "path": "../AuctionSystem.Infrastructure/AuctionSystem.Infrastructure.csproj",
+      "msbuildProject": "../AuctionSystem.Infrastructure/AuctionSystem.Infrastructure.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net8.0": [
+      "AuctionSystem.Infrastructure >= 1.0.0"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\Zeko\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "C:\\Users\\Zeko\\source\\repos\\Auction System\\AuctionSystem.API\\AuctionSystem.API.csproj",
+      "projectName": "AuctionSystem.API",
+      "projectPath": "C:\\Users\\Zeko\\source\\repos\\Auction System\\AuctionSystem.API\\AuctionSystem.API.csproj",
+      "packagesPath": "C:\\Users\\Zeko\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Zeko\\source\\repos\\Auction System\\AuctionSystem.API\\obj\\",
+      "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
+      "configFilePaths": [
+        "C:\\Users\\Zeko\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "net8.0"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "projectReferences": {
+            "C:\\Users\\Zeko\\source\\repos\\Auction System\\AuctionSystem.Infrastructure\\AuctionSystem.Infrastructure.csproj": {
+              "projectPath": "C:\\Users\\Zeko\\source\\repos\\Auction System\\AuctionSystem.Infrastructure\\AuctionSystem.Infrastructure.csproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
+      },
+      "SdkAnalysisLevel": "9.0.300"
+    },
+    "frameworks": {
+      "net8.0": {
+        "targetAlias": "net8.0",
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48",
+          "net481"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.302/PortableRuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}
