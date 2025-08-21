@@ -1,0 +1,123 @@
+<div class="not-found-page">
+      <!-- Animated Background -->
+      <div class="animated-bg">
+        <div class="floating-gavel gavel-1">
+          <i class="fas fa-gavel"></i>
+        </div>
+        <div class="floating-gavel gavel-2">
+          <i class="fas fa-gavel"></i>
+        </div>
+        <div class="floating-gavel gavel-3">
+          <i class="fas fa-gavel"></i>
+        </div>
+        <div class="floating-coins">
+          <i class="fas fa-coins"></i>
+        </div>
+        <div class="floating-gem">
+          <i class="fas fa-gem"></i>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="row justify-content-center align-items-center min-vh-100">
+          <div class="col-lg-8 text-center">
+            
+            <!-- 404 Animation -->
+            <div class="error-animation">
+              <div class="error-number">
+                <span class="digit-4 bounce-1">4</span>
+                <div class="digit-0">
+                  <div class="auction-hammer">
+                    <i class="fas fa-gavel"></i>
+                  </div>
+                </div>
+                <span class="digit-4 bounce-2">4</span>
+              </div>
+            </div>
+
+            <!-- Error Message -->
+            <div class="error-content fade-in-up">
+              <h1 class="error-title">
+                <span class="text-auction-gold">عذراً!</span> الصفحة غير موجودة
+              </h1>
+              <p class="error-subtitle">
+                يبدو أن المزاد الذي تبحث عنه قد انتهى أو أن الصفحة غير متاحة حالياً
+              </p>
+
+              <!-- Search Suggestions -->
+              <div class="suggestions-container">
+                <h5 class="suggestions-title">
+                  <i class="fas fa-lightbulb text-auction-gold me-2"></i>
+                  ماذا عن هذه البدائل؟
+                </h5>
+                <div class="suggestions-grid">
+                  <a [routerLink]="'/bidder/home'" class="suggestion-card">
+                    <div class="suggestion-icon">
+                      <i class="fas fa-home"></i>
+                    </div>
+                    <h6>الصفحة الرئيسية</h6>
+                    <p>استكشف أحدث المزادات</p>
+                  </a>
+                
+                  <a [routerLink]="'/bidder/faq'" class="suggestion-card">
+                    <div class="suggestion-icon">
+                      <i class="fas fa-question-circle"></i>
+                    </div>
+                    <h6>الأسئلة الشائعة</h6>
+                    <p>احصل على المساعدة</p>
+                  </a>
+                </div>
+              </div>
+
+              <!-- Action Buttons -->
+<div class="action-buttons d-flex justify-content-center gap-3">
+  <button class="btn btn-auction btn-lg" (click)="goBack()">
+    <i class="fas fa-arrow-right me-2"></i>
+    العودة للخلف
+  </button>
+
+  <a [routerLink]="'/bidder/home'" class="btn btn-outline-auction btn-lg">
+    <i class="fas fa-home me-2"></i>
+    الصفحة الرئيسية
+  </a>
+</div>
+
+
+
+              <!-- Fun Facts -->
+              <div class="fun-fact">
+                <div class="fact-icon">
+                  <i class="fas fa-info-circle"></i>
+                </div>
+                <p>
+                  <strong>هل تعلم؟</strong> 
+                  أول مزاد في التاريخ كان في بابل القديمة منذ أكثر من 2500 عام!
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contact Support -->
+      <!-- <div class="support-section">
+        <div class="container">
+          <div class="support-card">
+            <div class="row align-items-center">
+              <div class="col-lg-8">
+                <h5>
+                  <i class="fas fa-headset text-auction-gold me-2"></i>
+                  هل تحتاج مساعدة؟
+                </h5>
+                <p>فريق الدعم الفني متاح لمساعدتك على مدار الساعة</p>
+              </div>
+              <div class="col-lg-4 text-lg-end">
+                <a href="mailto:support@mazadaty.com" class="btn btn-support">
+                  <i class="fas fa-envelope me-2"></i>تواصل معنا
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> -->
+    </div>

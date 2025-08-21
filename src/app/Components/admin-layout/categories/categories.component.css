@@ -1,0 +1,227 @@
+.categories-page {
+      animation: fadeIn 0.5s ease-in;
+    }
+
+    .page-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+      padding-bottom: 20px;
+      border-bottom: 2px solid #eee;
+    }
+
+    .text-auction-gold {
+      color: #D4AF37;
+    }
+
+    .btn-auction {
+      background: linear-gradient(45deg, #D4AF37 0%, #B8860B 100%);
+      border: none;
+      color: white;
+      font-weight: bold;
+      padding: 12px 24px;
+      border-radius: 25px;
+      transition: all 0.3s ease;
+    }
+
+    .btn-auction:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
+    }
+
+    .stats-section {
+      margin-bottom: 30px;
+    }
+
+    .stat-card {
+      background: white;
+      border-radius: 15px;
+      padding: 25px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      display: flex;
+      align-items: center;
+      transition: transform 0.3s ease;
+    }
+
+    .stat-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .stat-card.total { border-right: 5px solid #007bff; }
+    .stat-card.active { border-right: 5px solid #28a745; }
+    .stat-card.auctions { border-right: 5px solid #D4AF37; }
+
+    .stat-icon {
+      font-size: 2.5rem;
+      margin-left: 20px;
+      opacity: 0.8;
+    }
+
+    .total .stat-icon { color: #007bff; }
+    .active .stat-icon { color: #28a745; }
+    .auctions .stat-icon { color: #D4AF37; }
+
+    .stat-content h3 {
+      font-size: 2rem;
+      font-weight: bold;
+      margin: 0;
+      color: #333;
+    }
+
+    .stat-content p {
+      margin: 0;
+      color: #6c757d;
+    }
+
+    .search-section {
+      background: white;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      margin-bottom: 30px;
+    }
+
+    .search-box {
+      position: relative;
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #6c757d;
+    }
+
+    .search-box input {
+      padding-right: 45px;
+    }
+
+    .categories-grid {
+      margin-bottom: 30px;
+    }
+
+    .category-card {
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+      overflow: hidden;
+    }
+
+    .category-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    }
+
+    .category-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px;
+      background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+    }
+
+    .category-actions {
+      display: flex;
+      gap: 5px;
+    }
+
+    .category-body {
+      padding: 20px;
+      text-align: center;
+    }
+
+    .category-name {
+      margin: 0 0 15px 0;
+      color: #333;
+      font-weight: 600;
+    }
+
+    .category-stats {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    .stat-item {
+      color: #6c757d;
+      font-size: 0.9rem;
+    }
+
+    .category-footer {
+      padding: 0 20px 20px 20px;
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 60px 20px;
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    .modal.show {
+      background: rgba(0,0,0,0.5);
+    }
+
+    .modal-content {
+      border-radius: 15px;
+      border: none;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    }
+
+    .modal-header {
+      background: linear-gradient(135deg, #1a1a2e, #16213e);
+      color: white;
+      border-radius: 15px 15px 0 0;
+    }
+
+    .pagination-container {
+      display: flex;
+      justify-content: center;
+    }
+
+    .page-link {
+      color: #D4AF37;
+      border-color: #D4AF37;
+    }
+
+    .page-item.active .page-link {
+      background-color: #D4AF37;
+      border-color: #D4AF37;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 768px) {
+      .page-header {
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .search-section .row {
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .category-header {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+      }
+
+      .stat-card {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .stat-icon {
+        margin-left: 0;
+        margin-bottom: 15px;
+      }
+    }

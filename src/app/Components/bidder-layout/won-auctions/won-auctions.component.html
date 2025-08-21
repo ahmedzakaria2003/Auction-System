@@ -1,0 +1,296 @@
+<!-- Profile Header -->
+<app-nav-bar></app-nav-bar>
+<section class="profile-header mt-5">
+  <div class="header-overlay"></div>
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-4 text-center">
+        <div class="profile-avatar">
+          <img src="https://i.pinimg.com/1200x/d8/c0/94/d8c094d5e817bf9966da2401e52edc35.jpg" alt="Profile" class="avatar-img">
+          <div class="avatar-badge"><i class="fas fa-crown"></i></div>
+        </div>
+        <h2 class="profile-name">{{userName}}</h2>
+        <p class="profile-title">مزايد محترف</p>
+      </div>
+      <div class="col-lg-8">
+        <div class="profile-stats">
+          <div class="stat-card">
+            <div class="stat-icon"><i class="fas fa-trophy"></i></div>
+            <div class="stat-info"><h3>{{wonAuctions.length}}</h3><p>مزاد فائز</p></div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon"><i class="fas fa-check-circle"></i></div>
+            <div class="stat-info"><h3>{{getPaidAuctionsCount()}}</h3><p>مدفوع</p></div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon"><i class="fas fa-clock"></i></div>
+            <div class="stat-info"><h3>{{getUnpaidAuctionsCount()}}</h3><p>في انتظار الدفع</p></div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon"><i class="fas fa-dollar-sign"></i></div>
+            <div class="stat-info"><h3>${{getTotalSpent() | number:'1.0-0'}}</h3><p>إجمالي المشتريات</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Won Auctions Section -->
+<section class="won-auctions-section">
+  <div class="container">
+    <div class="section-header text-center">
+      <h2 class="section-title"><i class="fas fa-trophy text-warning me-3"></i>مزاداتي الفائزة</h2>
+      <p class="section-subtitle">تهانينا! هذه هي المزادات التي فزت بها</p>
+    </div>
+
+    <!-- Filter Tabs -->
+    <div class="filter-tabs">
+      <button class="filter-tab" [class.active]="activeFilter === 'all'" (click)="setFilter('all')">
+        <i class="fas fa-list me-2"></i>جميع المزادات
+      </button>
+      <button class="filter-tab" [class.active]="activeFilter === 'paid'" (click)="setFilter('paid')">
+        <i class="fas fa-check-circle me-2"></i>المدفوعة
+      </button>
+      <button class="filter-tab" [class.active]="activeFilter === 'unpaid'" (click)="setFilter('unpaid')">
+        <i class="fas fa-clock me-2"></i>في انتظار الدفع
+      </button>
+    </div>
+
+    <!-- Auctions Slider -->
+    <div class="auctions-slider-container" *ngIf="getFilteredAuctions().length > 0">
+      <div class="slider-wrapper">
+        <div class="auctions-slider"
+             [style.transform]="'translateX(' + getSliderTransform() + 'px)'"
+             [style.transition]="isTransitioning ? 'transform 0.5s ease' : 'none'">
+
+          <div class="auction-slide" *ngFor="let auction of getFilteredAuctions(); let i = index">
+            <div class="auction-card">
+              <!-- Image Carousel -->
+              <div class="image-carousel">
+                <div class="carousel-container">
+                  <div class="carousel-track"
+                       [style.transform]="'translateX(' + getCarouselTransform(auction.id) + '%)'">
+                    <div class="carousel-slide" *ngFor="let image of auction.images">
+                      <img [src]="normalizeImageUrl(image)"
+                           [alt]="auction.title"
+                           class="img-thumbnail"
+                           *ngIf="image">
+                    </div>
+                  </div>
+
+                  <span *ngIf="!auction.images || auction.images.length === 0" class="text-muted">
+                    لا يوجد صورة
+                  </span>
+
+                  <!-- Navigation Buttons -->
+                  <button class="carousel-btn prev-btn" (click)="previousImage(auction.id)"
+                          *ngIf="auction.images.length > 1">
+                    <i class="fas fa-chevron-right"></i>
+                  </button>
+                  <button class="carousel-btn next-btn" (click)="nextImage(auction.id)"
+                          *ngIf="auction.images.length > 1">
+                    <i class="fas fa-chevron-left"></i>
+                  </button>
+
+                  <!-- Image Indicators -->
+                  <div class="carousel-indicators" *ngIf="auction.images.length > 1">
+                    <button class="indicator"
+                            *ngFor="let image of auction.images; let j = index"
+                            [class.active]="getCurrentImageIndex(auction.id) === j"
+                            (click)="goToImage(auction.id, j)">
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Status Badge -->
+                <div class="status-badge" [class]="auction.isPaid ? 'paid' : 'unpaid'">
+                  <i [class]="auction.isPaid ? 'fas fa-check-circle' : 'fas fa-clock'"></i>
+                  <span>{{auction.isPaid ? 'مدفوع' : 'في انتظار الدفع'}}</span>
+                </div>
+
+                <!-- Category Badge -->
+                <div class="category-badge">{{auction.categoryName}}</div>
+              </div>
+
+              <!-- Card Content -->
+              <div class="card-content">
+                <h3 class="auction-title">{{auction.title}}</h3>
+
+                <div class="auction-details">
+                  <div class="detail-item">
+                    <i class="fas fa-gavel text-auction-gold"></i>
+                    <span>مبلغ الفوز: <strong>${{auction.winningBidAmount | number:'1.2-2'}}</strong></span>
+                  </div>
+                  <div class="detail-item">
+                    <i class="fas fa-calendar text-auction-gold"></i>
+                    <span>انتهى في: {{formatDate(auction.endTime)}}</span>
+                  </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="action-buttons">
+                  <button class="btn btn-auction"
+                          *ngIf="!auction.isPaid"
+                          (click)="initiatePayment(auction)"
+                          [disabled]="processingPayment === auction.id">
+                    <i class="fas fa-credit-card me-2"></i>
+                    <span *ngIf="processingPayment !== auction.id">ادفع الآن</span>
+                    <span *ngIf="processingPayment === auction.id">جاري التحضير...</span>
+                  </button>
+
+                  <button class="btn btn-success"
+                          *ngIf="auction.isPaid && !hasFeedback(auction.id)"
+                          (click)="openFeedbackModal(auction)">
+                    <i class="fas fa-star me-2"></i>قيم البائع
+                  </button>
+
+                  <button class="btn btn-outline-auction"
+                          *ngIf="auction.isPaid && hasFeedback(auction.id)"
+                          disabled>
+                    <i class="fas fa-check me-2"></i>تم التقييم
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Slider Navigation -->
+      <div class="slider-navigation" *ngIf="getFilteredAuctions().length > getVisibleSlides()">
+        <button class="slider-btn prev" (click)="previousSlide()" [disabled]="currentSlide === 0">
+          <i class="fas fa-chevron-right"></i>
+        </button>
+        <button class="slider-btn next" (click)="nextSlide()" [disabled]="currentSlide >= getMaxSlide()">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+      </div>
+
+      <!-- Slider Indicators -->
+      <div class="slider-indicators" *ngIf="getFilteredAuctions().length > getVisibleSlides()">
+        <button class="slider-indicator"
+                *ngFor="let slide of getSliderIndicators(); let i = index"
+                [class.active]="currentSlide === i"
+                (click)="goToSlide(i)">
+        </button>
+      </div>
+    </div>
+
+    <!-- Empty State -->
+    <div class="empty-state" *ngIf="getFilteredAuctions().length === 0">
+      <div class="empty-icon"><i class="fas fa-trophy"></i></div>
+      <h3>لا توجد مزادات</h3>
+      <p *ngIf="activeFilter === 'all'">لم تفز بأي مزادات بعد</p>
+      <p *ngIf="activeFilter === 'paid'">لا توجد مزادات مدفوعة</p>
+      <p *ngIf="activeFilter === 'unpaid'">لا توجد مزادات في انتظار الدفع</p>
+      <a class="btn btn-auction" [routerLink]="'/home'">
+        <i class="fas fa-search me-2"></i>استكشف المزادات
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Feedback Modal -->
+<div class="modal fade" id="feedbackModal" tabindex="-1" *ngIf="selectedAuction">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">تقييم البائع</h5>
+        <button type="button" class="btn-close" (click)="closeFeedbackModal()"></button>
+      </div>
+      <div class="modal-body">
+        <div class="feedback-form">
+          <div class="auction-info">
+            <h6>{{selectedAuction.title}}</h6>
+            <p class="text-muted">مبلغ الفوز: ${{selectedAuction.winningBidAmount | number:'1.2-2'}}</p>
+          </div>
+
+          <div *ngIf="hasFeedback(selectedAuction.id); else ratingForm">
+            <div class="alert alert-success">
+              لقد قمت بالفعل بتقييم هذا المزاد ✅
+            </div>
+          </div>
+
+          <ng-template #ratingForm>
+            <div class="rating-section">
+              <label class="form-label">التقييم</label>
+              <div class="star-rating">
+                <button type="button" class="star-btn"
+                        *ngFor="let star of [1,2,3,4,5]; let i = index"
+                        [class.active]="feedbackForm.rating > i"
+                        (click)="setRating(i + 1)">
+                  <i class="fas fa-star"></i>
+                </button>
+              </div>
+            </div>
+
+            <div class="comment-section">
+              <label class="form-label">التعليق (اختياري)</label>
+              <textarea class="form-control" rows="4"
+                        placeholder="شارك تجربتك مع البائع..."
+                        [(ngModel)]="feedbackForm.comment"
+                        maxlength="1000"></textarea>
+              <small class="text-muted">{{feedbackForm.comment.length}}/1000 حرف</small>
+            </div>
+          </ng-template>
+
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="closeFeedbackModal()">إلغاء</button>
+        <button type="button" class="btn btn-auction"
+                (click)="submitFeedback()"
+                [disabled]="feedbackForm.rating === 0 || submittingFeedback || hasFeedback(selectedAuction.id)">
+          <i class="fas fa-paper-plane me-2"></i>
+          <span *ngIf="!submittingFeedback">إرسال التقييم</span>
+          <span *ngIf="submittingFeedback">جاري الإرسال...</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Payment Modal -->
+<div class="modal fade" id="paymentModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">إتمام الدفع</h5>
+        <button type="button" class="btn-close" (click)="closePaymentModal()"></button>
+      </div>
+
+      <div class="modal-body text-center">
+        <div class="payment-info">
+          <i class="fas fa-credit-card text-auction-gold fa-3x mb-3"></i>
+          <h4>تفاصيل الدفع</h4>
+          <p>المبلغ المستحق: 
+            <strong>{{ selectedAuction?.winningBidAmount | currency:'EGP':'symbol' }}</strong>
+          </p>
+          <p class="text-muted">يتم الدفع بأمان عبر Stripe. لن يتم حفظ بيانات بطاقتك.</p>
+        </div>
+
+        <!-- Stripe Card Input -->
+        <div id="card-element" class="mb-3"
+             style="border: 1px solid #ccc; padding: 10px; border-radius: 8px;">
+        </div>
+
+        <!-- Error message -->
+        <div id="card-errors" class="text-danger mb-3" role="alert"></div>
+
+        <button class="btn btn-auction btn-lg w-100"
+                (click)="confirmPayment()"
+                [disabled]="processingPayment !== null">
+          <i class="fas fa-lock me-2"></i>
+          <span *ngIf="processingPayment === null">ادفع الآن</span>
+          <span *ngIf="processingPayment !== null">جاري المعالجة...</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<app-footer></app-footer>

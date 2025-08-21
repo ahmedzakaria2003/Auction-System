@@ -1,0 +1,141 @@
+<app-nav-bar></app-nav-bar>
+
+<div class="page-content">
+  <!-- Page Header -->
+  <div class="page-header">
+    <div class="header-content">
+      <h1 class="page-title">
+        <i class="fas fa-hand-paper me-3"></i>
+        مزايداتي النشطة
+      </h1>
+      <p class="page-subtitle">تابع جميع المزادات التي تشارك فيها</p>
+    </div>
+    <div class="header-stats">
+      <div class="stat-card">
+        <div class="stat-number">{{activeBids.length}}</div>
+        <div class="stat-label">مزاد نشط</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Active Bids Slider -->
+  <div class="bids-slider-container" *ngIf="activeBids.length > 0">
+    <div class="slider-header">
+      <h3><i class="fas fa-fire me-2"></i>مزايداتك النشطة</h3>
+      <div class="slider-controls">
+        <button class="slider-btn prev" (click)="previousSlide()" [disabled]="currentSlide === 0">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+        <span class="slide-indicator">{{currentSlide + 1}} / {{getTotalSlides()}}</span>
+        <button class="slider-btn next" (click)="nextSlide()" [disabled]="currentSlide >= getTotalSlides() - 1">
+          <i class="fas fa-chevron-right"></i>
+        </button>
+      </div>
+    </div>
+
+    <div class="bids-slider" [style.transform]="'translateX(' + (currentSlide * -100) + '%)'">
+      <div class="bid-slide" *ngFor="let bid of activeBids; let i = index">
+        <div class="bid-card" [class.winning]="isWinningBid(bid)" (click)="viewAuctionDetails(bid.id)">
+          <div class="bid-image">
+            <img [src]="(bid.images) ? normalizeImageUrl(bid.images[0]) : ''"
+                 alt="{{bid.title}}" class="img-thumbnail" *ngIf="bid.images && bid.images[0]">
+            <span *ngIf="!bid.images" class="text-muted">لا يوجد صورة</span>
+            <div class="bid-status" [ngClass]="getBidStatusClass(bid)">
+              <i class="fas" [class.fa-trophy]="isWinningBid(bid)" [class.fa-clock]="!isWinningBid(bid)"></i>
+              {{getBidStatusText(bid)}}
+            </div>
+            <div class="time-remaining">
+              <i class="fas fa-clock me-1"></i>
+              {{getTimeRemaining(bid.endTime)}}
+            </div>
+          </div>
+          
+          <div class="bid-content">
+            <h5 class="bid-title">{{bid.title}}</h5>
+            <p class="bid-category">
+              <i class="fas fa-tag me-1"></i>
+              {{bid.categoryName}}
+            </p>
+            
+            <div class="bid-amounts">
+              <div class="amount-row">
+                <span class="amount-label">مزايدتك:</span>
+                <span class="your-bid">${{bid.yourBid | number:'1.2-2'}}</span>
+              </div>
+              <div class="amount-row">
+                <span class="amount-label">أعلى مزايدة:</span>
+                <span class="highest-bid" [class.winning]="isWinningBid(bid)">
+                  ${{bid.currentHighestBid | number:'1.2-2'}}
+                </span>
+              </div>
+            </div>
+            
+            <div class="bid-actions">
+              <button class="btn btn-auction btn-sm" (click)="viewAuctionDetails(bid.id); $event.stopPropagation()">
+                <i class="fas fa-eye me-1"></i>
+                عرض المزاد
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide Indicators -->
+    <div class="slide-indicators">
+      <button *ngFor="let slide of getSlideArray(); let i = index" 
+              class="indicator" 
+              [class.active]="i === currentSlide"
+              (click)="goToSlide(i)">
+      </button>
+    </div>
+  </div>
+
+  <!-- Empty State -->
+  <div class="empty-state" *ngIf="activeBids.length === 0">
+    <div class="empty-icon">
+      <i class="fas fa-hand-paper fa-5x"></i>
+    </div>
+    <h3>لا توجد مزايدات نشطة</h3>
+    <p>لم تشارك في أي مزادات حتى الآن. ابدأ بتصفح المزادات المتاحة!</p>
+    <a [routerLink]="'/home'" class="btn btn-auction">
+      <i class="fas fa-search me-2"></i>
+      تصفح المزادات
+    </a>
+  </div>
+
+  <!-- Quick Stats -->
+  <div class="quick-stats" *ngIf="activeBids.length > 0">
+    <div class="row">
+      <div class="col-md-3">
+        <div class="stat-box">
+          <i class="fas fa-clock stat-icon"></i>
+          <div class="stat-info">
+            <h4>{{getEndingSoonCount()}}</h4>
+            <p>تنتهي قريباً</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="stat-box">
+          <i class="fas fa-dollar-sign stat-icon"></i>
+          <div class="stat-info">
+            <h4>${{getTotalBidAmount() | number:'1.0-0'}}</h4>
+            <p>إجمالي مزايداتك</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="stat-box">
+          <i class="fas fa-fire stat-icon"></i>
+          <div class="stat-info">
+            <h4>{{activeBids.length}}</h4>
+            <p>مزادات نشطة</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-footer></app-footer>

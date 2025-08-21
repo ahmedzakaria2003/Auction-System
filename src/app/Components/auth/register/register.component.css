@@ -1,0 +1,129 @@
+
+
+     .auth-container {
+      position: relative;
+      min-height: 100vh;
+    }
+    
+    .step-indicator {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+    
+    .step {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.2);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+    }
+    
+    .step.active {
+      background: var(--auction-gold);
+      border-color: var(--auction-gold);
+      box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+    }
+    
+    .step.completed {
+      background: #28a745;
+      border-color: #28a745;
+    }
+    
+    .step-line {
+      width: 50px;
+      height: 2px;
+      background: rgba(255, 255, 255, 0.3);
+      margin: 0 10px;
+    }
+    
+    .step-line.completed {
+      background: #28a745;
+    }
+    
+    .otp-container {
+      max-width: 300px;
+      margin: 0 auto;
+    }
+    
+    .otp-input {
+      width: 45px;
+      height: 45px;
+      font-size: 18px;
+      font-weight: bold;
+      border: 2px solid #ddd;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+    }
+    
+    .otp-input:focus {
+      border-color: var(--auction-gold);
+      box-shadow: 0 0 0 0.2rem rgba(212, 175, 55, 0.25);
+      transform: scale(1.05);
+    }
+    
+    .bg-auction-gold {
+      background-color: var(--auction-gold) !important;
+    }
+    
+    .password-requirements ul li {
+      font-size: 0.85rem;
+      margin-bottom: 5px;
+    }
+    
+    .success-animation {
+      animation: successPulse 1.5s ease-in-out;
+    }
+    
+    @keyframes successPulse {
+      0% {
+        transform: scale(0);
+        opacity: 0;
+      }
+      50% {
+        transform: scale(1.1);
+      }
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+    
+    .step-container {
+      animation: slideInUp 0.5s ease-out;
+    }
+    
+    @keyframes slideInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .otp-input {
+        width: 35px;
+        height: 35px;
+        font-size: 16px;
+      }
+      
+      .step {
+        width: 30px;
+        height: 30px;
+        font-size: 14px;
+      }
+      
+      .step-line {
+        width: 30px;
+      }
+    }
