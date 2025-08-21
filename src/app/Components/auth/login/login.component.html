@@ -1,111 +1,0 @@
-<div class="auth-container">
-  <div class="floating-elements"></div>
-  
-  <div class="container-fluid min-vh-100 d-flex align-items-center justify-content-center">
-    <div class="row w-100 justify-content-center">
-      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-        
-        <!-- Header Section -->
-        <div class="text-center mb-5 fade-in">
-          <div class="gavel-animation mb-3">
-            <h1 class="display-4 text-white pulse-glow">
-              🏛️ <span class="text-auction-gold">مزاداتي</span> 🔨
-            </h1>
-          </div>
-          <p class="lead text-white-50">نظام المزادات الأول في الشرق الأوسط</p>
-        </div>
-
-        <!-- Login Card -->
-        <div class="golden-border bg-glass overflow-hidden slide-in-left">
-          <div class="p-4 p-md-5">
-            <h3 class="text-auction-gold mb-4 text-center">
-              <i class="fas fa-sign-in-alt me-2"></i>تسجيل الدخول
-            </h3>
-            
-            <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
-              <!-- Email -->
-              <div class="mb-3">
-                <label class="form-label text-white">البريد الإلكتروني</label>
-                <input 
-                  type="email" 
-                  class="form-control" 
-                  name="email"
-                  [(ngModel)]="loginData.email"
-                  required
-                  placeholder="أدخل بريدك الإلكتروني"
-                  (focus)="showEmailMessage = false">
-                <div *ngIf="!loginData.email && showEmailMessage" class="text-danger">يرجى إدخال البريد الإلكتروني.</div>
-              </div>
-              
-              <!-- Password -->
-              <div class="mb-4">
-                <label class="form-label text-white">كلمة المرور</label>
-                <input 
-                  type="password" 
-                  class="form-control"
-                  name="password"
-                  [(ngModel)]="loginData.password"
-                  required
-                  placeholder="أدخل كلمة المرور"
-                  (focus)="showPasswordMessage = false">
-                <div *ngIf="!loginData.password && showPasswordMessage" class="text-danger">يرجى إدخال كلمة المرور.</div>
-              </div>
-              
-              <!-- Remember Me -->
-              <div class="d-flex justify-content-between align-items-center mb-4">
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" id="remember" name="terms" [(ngModel)]="loginData.terms">
-                  <label class="form-check-label text-white-50" for="remember">
-                    تذكرني
-                  </label>
-                </div>
-                <a [routerLink]="'reset-password'" class="text-auction-gold text-decoration-none">نسيت كلمة المرور؟</a>
-              </div>
-              
-              <!-- Submit -->
-              <button 
-                type="submit" 
-                class="btn btn-auction w-100 mb-3" 
-                [disabled]="!loginForm.valid">
-                دخول المزاد 🏺
-              </button>
-              
-              <div class="text-center">
-                <span class="text-white-50">ليس لديك حساب؟ </span>
-                <a routerLink="/register" class="text-auction-gold text-decoration-none">
-                  إنشاء حساب جديد
-                </a>
-              </div>
-              <div *ngIf="backendError" class="text-danger text-center mt-2">{{ backendError }}</div>
-            </form>
-          </div>
-        </div>
-        
-        <!-- Features Section -->
-        <div class="row mt-5 text-center fade-in">
-          <div class="col-md-4 mb-3">
-            <div class="text-auction-gold mb-2">
-              <i class="fas fa-shield-alt fa-2x"></i>
-            </div>
-            <h6 class="text-white">أمان عالي</h6>
-            <small class="text-white-50">حماية معلوماتك بأعلى معايير الأمان</small>
-          </div>
-          <div class="col-md-4 mb-3">
-            <div class="text-auction-gold mb-2">
-              <i class="fas fa-clock fa-2x"></i>
-            </div>
-            <h6 class="text-white">مزادات فورية</h6>
-            <small class="text-white-50">شارك في المزادات لحظة بلحظة</small>
-          </div>
-          <div class="col-md-4 mb-3">
-            <div class="text-auction-gold mb-2">
-              <i class="fas fa-gem fa-2x"></i>
-            </div>
-            <h6 class="text-white">قطع نادرة</h6>
-            <small class="text-white-50">أفضل المقتنيات والتحف النادرة</small>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>

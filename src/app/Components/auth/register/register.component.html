@@ -1,248 +1,0 @@
-  <div class="auth-container">
-      <div class="floating-elements"></div>
-      
-      <div class="container-fluid min-vh-100 d-flex align-items-center justify-content-center">
-        <div class="row w-100 justify-content-center">
-          <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-            
-            <!-- Header Section -->
-            <div class="text-center mb-5 fade-in">
-              <div class="gavel-animation mb-3">
-                <h1 class="display-4 text-white pulse-glow">
-                  🏛️ <span class="text-auction-gold">مزاداتي</span> 🔨
-                </h1>
-              </div>
-              <p class="lead text-white-50">نظام المزادات الأول في الشرق الأوسط</p>
-            </div>
-
-            <!-- Register Card -->
-            <div class="golden-border bg-glass overflow-hidden slide-in-right">
-              <div class="p-4 p-md-5">
-                <h3 class="text-auction-gold mb-4 text-center">
-                  <i class="fas fa-user-plus me-2"></i>إنشاء حساب جديد
-                </h3>
-                
-             <form #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm)">
-  <!-- User Type Selection -->
-  <div class="mb-4">
-    <label class="form-label text-white mb-3">
-      <i class="fas fa-user-tag me-2"></i>نوع الحساب
-    </label>
-    <div class="row">
-      <div class="col-6">
-        <input 
-          type="radio" 
-          class="btn-check" 
-          name="userType" 
-          id="bidder" 
-          value="Bidder" 
-          [(ngModel)]="registerData.userType" 
-          required>
-        <label class="btn btn-outline-warning w-100 py-3" for="bidder">
-          <i class="fas fa-hand-paper fa-2x d-block mb-2"></i>
-          <strong>مزايد</strong>
-          <small class="d-block">أشارك في المزادات</small>
-        </label>
-      </div>
-      <div class="col-6">
-        <input 
-          type="radio" 
-          class="btn-check" 
-          name="userType" 
-          id="seller" 
-          value="Seller" 
-          [(ngModel)]="registerData.userType" 
-          required>
-        <label class="btn btn-outline-warning w-100 py-3" for="seller">
-          <i class="fas fa-store fa-2x d-block mb-2"></i>
-          <strong>بائع</strong>
-          <small class="d-block">أعرض منتجاتي</small>
-        </label>
-      </div>
-    </div>
-  </div>
-
-  <!-- Full Name -->
-  <div class="mb-3">
-    <label class="form-label text-white">الاسم الكامل</label>
-    <input 
-      type="text" 
-      class="form-control" 
-      [(ngModel)]="registerData.fullName" 
-      name="fullName"
-      required
-      minlength="3"
-      placeholder="أدخل اسمك الكامل">
-    <div *ngIf="registerForm.controls['fullName']?.invalid && registerForm.controls['fullName']?.touched" class="text-danger">
-      <small>الاسم الكامل يجب أن يكون بين 3 و50 حرفًا، بدون رموز أو أرقام.</small>
-    </div>
-  </div>
-
-  <!-- Username -->
-  <div class="mb-3">
-    <label class="form-label text-white">اسم المستخدم</label>
-    <input 
-      type="text" 
-      class="form-control" 
-      [(ngModel)]="registerData.userName" 
-      name="userName"
-      required
-      minlength="3"
-      maxlength="20"
-      placeholder="اختر اسم مستخدم فريد">
-    <div *ngIf="registerForm.controls['userName']?.invalid && registerForm.controls['userName']?.touched" class="text-danger">
-      <small>اسم المستخدم يجب أن يكون 3-20 حرفًا ويحتوي على حروف وأرقام و (_) فقط.</small>
-    </div>
-    <div *ngIf="backendErrors['userName']" class="text-danger">
-      <small>{{ backendErrors['userName'] }}</small>
-    </div>
-  </div>
-
-  <!-- Email -->
-  <div class="mb-3">
-    <label class="form-label text-white">البريد الإلكتروني</label>
-    <input 
-      type="email" 
-      class="form-control" 
-      [(ngModel)]="registerData.email" 
-      name="email" 
-      required
-      placeholder="أدخل بريدك الإلكتروني">
-    <div *ngIf="registerForm.controls['email']?.invalid && registerForm.controls['email']?.touched" class="text-danger">
-      <small>يرجى إدخال بريد إلكتروني صالح.</small>
-    </div>
-    <div *ngIf="backendErrors['email']" class="text-danger">
-      <small>{{ backendErrors['email'] }}</small>
-    </div>
-  </div>
-
-  <!-- Phone -->
-  <div class="mb-3">
-    <label class="form-label text-white">رقم الهاتف</label>
-    <input 
-      type="tel" 
-      class="form-control" 
-      [(ngModel)]="registerData.phoneNumber" 
-      name="phoneNumber"
-      required
-      placeholder="رقم الهاتف">
-    <div *ngIf="registerForm.controls['phoneNumber']?.invalid && registerForm.controls['phoneNumber']?.touched" class="text-danger">
-      <small>أدخل رقم هاتف صحيح يبدأ بـ 01.</small>
-    </div>
-  </div>
-
-  <!-- Address -->
-  <div class="mb-3">
-    <label class="form-label text-white">العنوان</label>
-    <textarea 
-      class="form-control" 
-      [(ngModel)]="registerData.address" 
-      name="address" 
-      rows="2" 
-      required
-      minlength="5"
-      placeholder="أدخل عنوانك الكامل"></textarea>
-    <div *ngIf="registerForm.controls['address']?.invalid && registerForm.controls['address']?.touched" class="text-danger">
-      <small>العنوان يجب أن يكون 5 أحرف على الأقل.</small>
-    </div>
-  </div>
-
-  <!-- Password -->
-  <div class="mb-3">
-    <label class="form-label text-white">كلمة المرور</label>
-    <input 
-      type="password" 
-      class="form-control" 
-      [(ngModel)]="registerData.password" 
-      name="password" 
-      required
-      minlength="8"
-      placeholder="أدخل كلمة المرور">
-    <div *ngIf="registerForm.controls['password']?.invalid && registerForm.controls['password']?.touched" class="text-danger">
-      <small>كلمة المرور يجب أن تحتوي على حرف كبير وصغير ورقم ورمز خاص، وطولها لا يقل عن 8.</small>
-    </div>
-  </div>
-
-  <!-- Confirm Password -->
-  <div class="mb-4">
-    <label class="form-label text-white">تأكيد كلمة المرور</label>
-    <input 
-      type="password" 
-      class="form-control" 
-      [(ngModel)]="registerData.confirmPassword" 
-      name="confirmPassword" 
-      required
-      placeholder="أعد إدخال كلمة المرور">
-    <div *ngIf="registerForm.controls['confirmPassword']?.invalid && registerForm.controls['confirmPassword']?.touched" class="text-danger">
-      <small>تأكيد كلمة المرور مطلوب ويجب أن يطابق كلمة المرور.</small>
-    </div>
-    <div *ngIf="backendErrors['confirmPassword']" class="text-danger">
-      <small>{{ backendErrors['confirmPassword'] }}</small>
-    </div>
-  </div>
-
-  <!-- Terms and Conditions -->
-  <div class="form-check mb-4">
-    <input 
-      class="form-check-input" 
-      type="checkbox" 
-      id="terms" 
-      [(ngModel)]="registerData.terms" 
-      name="terms" 
-      required>
-    <label class="form-check-label text-white-50" for="terms">
-      أوافق على <a [routerLink]="'/privacy'" class="text-auction-gold">الشروط والأحكام</a>
-    </label>
-    <div *ngIf="registerForm.controls['terms']?.invalid && registerForm.controls['terms']?.touched" class="text-danger">
-      <small>يجب الموافقة على الشروط والأحكام.</small>
-    </div>
-  </div>
-
-  <!-- General backend error -->
-  <div *ngIf="backendErrors['general']" class="text-danger mb-3">
-    <small>{{ backendErrors['general'] }}</small>
-  </div>
-
-  <button type="submit" class="btn btn-auction w-100 mb-3" [disabled]="registerForm.invalid">
-    انضم للمزاد 👑
-  </button>
-</form>
-                
-                <div class="text-center">
-                  <span class="text-white-50">لديك حساب بالفعل؟ </span>
-                  <a routerLink="/login" class="text-auction-gold text-decoration-none">
-                    تسجيل الدخول
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            <!-- Features Section -->
-            <div class="row mt-5 text-center fade-in">
-              <div class="col-md-4 mb-3">
-                <div class="text-auction-gold mb-2">
-                  <i class="fas fa-shield-alt fa-2x"></i>
-                </div>
-                <h6 class="text-white">أمان عالي</h6>
-                <small class="text-white-50">حماية معلوماتك بأعلى معايير الأمان</small>
-              </div>
-              <div class="col-md-4 mb-3">
-                <div class="text-auction-gold mb-2">
-                  <i class="fas fa-clock fa-2x"></i>
-                </div>
-                <h6 class="text-white">مزادات فورية</h6>
-                <small class="text-white-50">شارك في المزادات لحظة بلحظة</small>
-              </div>
-              <div class="col-md-4 mb-3">
-                <div class="text-auction-gold mb-2">
-                  <i class="fas fa-gem fa-2x"></i>
-                </div>
-                <h6 class="text-white">قطع نادرة</h6>
-                <small class="text-white-50">أفضل المقتنيات والتحف النادرة</small>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  
