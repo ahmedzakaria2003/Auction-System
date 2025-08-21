@@ -10,9 +10,10 @@ namespace AuctionSystem.Shared
         {
             private const int DefaultPageSize = 5;
             private const int MaxPageSize = 10;
-
-            public AuctionSorting Sort { get; set; }
-          
+        public DateTime? StartDate { get; set; }
+        public DateTime? EndDate { get; set; }
+        public AuctionSorting Sort { get; set; }
+            public Guid? CategoryId { get; set; }
             public string? Search { get; set; }
            public string Status { get; set; } = "";
            public int PageNumber { get; set; } = 1;
@@ -25,8 +26,9 @@ namespace AuctionSystem.Shared
             }
             public decimal? MaxPrice { get; set; }
             public decimal? MinPrice { get; set; } 
-        public bool? IsEndingSoon { get; set; }  
-        }
+        public bool? IsEndingSoon { get; set; }
+
     }
+}
 
 

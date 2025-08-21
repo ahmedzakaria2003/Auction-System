@@ -16,6 +16,8 @@ namespace AuctionSystem.Application.MappingProfile
         {
             CreateMap<ApplicationUser, UserDto>().ForMember(des => des.UserId, opt =>
             opt.MapFrom(src => src.Id));
+                
+     
         }
 
 

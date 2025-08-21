@@ -33,7 +33,12 @@ namespace AuctionSystem.Infrastructure.Repositories
                     .ToListAsync();
         }
 
-
+        public async Task<IEnumerable<Category>> GetAllAsync()
+        {
+            return await _context.Categories.Include(c => c.Auctions)
+               
+                    .ToListAsync();
+        }
 
     }
 }

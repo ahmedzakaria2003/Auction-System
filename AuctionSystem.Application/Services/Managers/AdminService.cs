@@ -1,4 +1,5 @@
 ﻿using AuctionSystem.Application.Contracts;
+using AuctionSystem.Application.DTOS;
 using AuctionSystem.Application.DTOS.AdminDTO;
 using AuctionSystem.Application.DTOS.AuctionProfile;
 using AuctionSystem.Application.DTOS.BidDTO;
@@ -87,10 +88,14 @@ namespace AuctionSystem.Application.Services.Managers
 
     return statistics;
 }
-        public async Task<PaginatedResult<AuctionListDto>> GetSellersAuctions(AuctionQueryParams specParams, Guid userId, bool isAdmin)
-        {
+        public async Task<PaginatedResult<AuctionListDto>> GetSellersAuctions
+            (AuctionQueryParamsDto queryParamsDto, Guid userId, bool isAdmin)
+
+        {   
+            var specParams = _mapper.Map <AuctionQueryParams>(queryParamsDto);
+
             var spec = new AuctionSpecification(specParams, userId, isAdmin);
-            var countSpec = new AuctionSpecification(specParams, userId, isAdmin);
+            var countSpec = new AuctionSpecificationForCount(specParams, userId, isAdmin);
 
             var totalCount = await _unitOfWork.Auctions.CountAsync(countSpec);
             var auctions = await _unitOfWork.Auctions.ListAsync(spec);
@@ -100,7 +105,7 @@ namespace AuctionSystem.Application.Services.Managers
                 throw new NotFoundException("No auctions found.");
             }
 
-            var auctionDtos = _mapper.Map<IEnumerable<AuctionListDto>>(auctions);
+            var auctionDtos = _mapper.Map<IReadOnlyList<AuctionListDto>>(auctions);
 
             return new PaginatedResult<AuctionListDto>
             {
@@ -113,15 +118,29 @@ namespace AuctionSystem.Application.Services.Managers
 
 
 
-        public async Task<List<UserDto>> GetAllUsersAsync()
+        public async Task<PaginatedResult<UserDto>> GetAllUsersAsync(UserQueryParamsDto queryParamsDto)
         {
-           var users = await _unitOfWork.Users.GetAllUsersAsync();
-            if (users is null )
+            var specParams = _mapper.Map<UserQueryParams>(queryParamsDto);
+            var spec = new UserSpecification(specParams);
+            var countSpec = new UserSpecificationForCount(specParams);
+
+            var users = await _unitOfWork.Users.ListAsync(spec);
+            if (users is null)
             {
                 throw new NotFoundException("No users found.");
             }
-            var userDtos = _mapper.Map<List<UserDto>>(users);
-            return userDtos;    
+            var total = await _unitOfWork.Users.CountAsync(countSpec);
+
+            var data = _mapper.Map<IReadOnlyList<UserDto>>(users);
+
+            return new PaginatedResult<UserDto>
+            {
+                Data = data,
+                Count = total,
+                PageNumber = specParams.PageNumber,
+                PageSize = specParams.PageSize
+            };
+
         }
 
         public async Task BanUserAsync(Guid userId)

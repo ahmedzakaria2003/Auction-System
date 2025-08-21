@@ -11,14 +11,8 @@ namespace AuctionSystem.Application.DTOS.AuctionProfile
         [StringLength(1000, MinimumLength = 10)]
         public string? Description { get; set; }
 
-        [Range(1, double.MaxValue, ErrorMessage = "Starting price must be greater than 0.")]
-        public decimal? StartingPrice { get; set; }
 
-        [DataType(DataType.DateTime)]
-        public DateTime? StartTime { get; set; }
-
-        [DataType(DataType.DateTime)]
-        public DateTime? EndTime { get; set; }
+       
 
         public Guid? CategoryId { get; set; }
 

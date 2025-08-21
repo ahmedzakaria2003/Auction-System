@@ -56,5 +56,12 @@ using AutoMapper;
             {
                 return await _unitOfWork.SellerFeedbacks.GetAverageRatingForSellerAsync(sellerId);
             }
+        public async Task<bool> HasUserRatedAuctionAsync(Guid userId, Guid auctionId)
+        {
+            return await _unitOfWork.SellerFeedbacks.HasUserRatedAuctionAsync(auctionId, userId);
         }
+
+
+
     }
+}

@@ -12,6 +12,9 @@ namespace AuctionSystem.Application.Contracts
         Task<List<ApplicationUser>> GetAllUsersAsync();
         Task<ApplicationUser?> GetByIdAsync(Guid id);
         Task UpdateAsync (ApplicationUser user);
+        Task<IReadOnlyList<ApplicationUser>> ListAsync(ISpecification<ApplicationUser> spec);
+        Task<int> CountAsync(ISpecification<ApplicationUser> spec);
+
 
     }
 }

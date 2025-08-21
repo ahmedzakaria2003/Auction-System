@@ -55,5 +55,17 @@ namespace Auction_System.Controllers
             var avg = await _serviceManager.SellerFeedbackService.GetAverageRatingForSellerAsync(sellerId);
             return Ok(new { averageRating = avg });
         }
+
+        [HttpGet("auction/{auctionId:guid}/has-rated")]
+        public async Task<ActionResult> HasUserRatedAuction(Guid auctionId)
+        {
+            var userId = User.GetUserId();
+            if (userId == null)
+                return Unauthorized(new { message = "User not authorized or user ID is missing" });
+
+            var hasRated = await _serviceManager.SellerFeedbackService.HasUserRatedAuctionAsync(userId.Value, auctionId);
+
+            return Ok(new { hasRated });
+        }
     }
-}
+    }

@@ -48,7 +48,7 @@ namespace AuctionSystem.Infrastructure.Services
             var token = new JwtSecurityToken(
                 issuer: _configuration["JWTOptions:Issuer"],
                 audience: _configuration["JWTOptions:Audience"],
-                expires: DateTime.UtcNow.AddHours(1),
+                expires: DateTime.UtcNow.AddHours(6),
                 claims: claims,
                 signingCredentials: _signingCredentials
             );

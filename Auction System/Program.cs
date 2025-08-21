@@ -21,7 +21,21 @@ builder.Services.AddControllers();
 // Layered Service Registration
 builder.Services.AddApplicationServices();
 builder.Services.AddInfrastructureServices(builder.Configuration);
-builder.Services.AddWebServices(); 
+builder.Services.AddWebServices();
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAllOrigins", builder =>
+    {
+        builder.WithOrigins("http://localhost:4200") // Angular dev server
+               .AllowAnyHeader()
+               .AllowAnyMethod()
+               .AllowCredentials();
+    });
+});
+
+
+
 
 var app = builder.Build();
 
@@ -45,6 +59,7 @@ app.UseHttpsRedirection();
 
 app.UseRouting();
 
+app.UseCors("AllowAllOrigins");
 app.UseAuthentication();
 app.UseAuthorization();
 

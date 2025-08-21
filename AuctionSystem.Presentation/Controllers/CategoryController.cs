@@ -1,4 +1,5 @@
-﻿using AuctionSystem.Application.DTOS.CategoryProfile;
+﻿using AuctionSystem.Application.DTOS;
+using AuctionSystem.Application.DTOS.CategoryProfile;
 using AuctionSystem.Application.Services.Contracts;
 using AuctionSystem.Shared;
 using Microsoft.AspNetCore.Authorization;
@@ -19,15 +20,28 @@ namespace Auction_System.Controllers
 
         [AllowAnonymous]
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<CategoryDto>>> GetAllCategoriesAsync()
+        public async Task<ActionResult<IEnumerable<CategoryDto>>> GetAllCategoriesAsync
+            ([FromQuery] AuctionQueryParamsDto auctionQuery)
         {
-            var result = await _serviceManager.CategoryService.GetAllCategoriesAsync();
+            var result = await _serviceManager.CategoryService.GetAllCategoriesAsync(auctionQuery);
 
             return Ok(result);
         }
+
+        [AllowAnonymous]
+        [HttpGet("dropdown")] 
+        public async Task<ActionResult<IEnumerable<CategoryDto>>> GetAllCategoriesForDropdownAsync()
+        {
+            var result = await _serviceManager.CategoryService.GetAllCategoriesForDropdownAsync();
+            return Ok(result);
+
+        }
+
+
+
         [AllowAnonymous]
         [HttpGet("with-active-auctions/{categoryId:guid}")]
-        public async Task<ActionResult<IEnumerable<CategoryWithAuctionsDto>>> GetCategoryWithAuctionsAsync( [FromQuery] AuctionQueryParams queryParams , Guid categoryId)
+        public async Task<ActionResult<IEnumerable<CategoryWithAuctionsDto>>> GetCategoryWithAuctionsAsync( [FromQuery] AuctionQueryParamsDto queryParams , Guid categoryId)
         {
             var result = await _serviceManager.CategoryService.GetCategoryWithAuctionsAsync( queryParams ,categoryId);
             return Ok(result);

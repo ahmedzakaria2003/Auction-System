@@ -21,9 +21,9 @@ namespace AuctionSystem.Infrastructure.Repositories
             _context = context;
         }
 
-        public async  Task<IEnumerable<Auction>> GetAllAuctionsAsync()
+        public async Task<IEnumerable<Auction>> GetAllAuctionsAsync()
         {
-            
+
             return await _context.Auctions
                .Include(a => a.CreatedBy)
                  .Include(a => a.Images)
@@ -33,7 +33,7 @@ namespace AuctionSystem.Infrastructure.Repositories
                  .ToListAsync();
         }
 
-    
+
 
 
         public async Task<IEnumerable<Auction>> GetAuctionsByCreatorIdAsync(Guid userId)
@@ -43,6 +43,8 @@ namespace AuctionSystem.Infrastructure.Repositories
                  .Include(a => a.Images)
                  .Include(a => a.Category)
                  .Include(a => a.Bids)
+                                  .ThenInclude(a => a.Bidder)
+
                 .ToListAsync();
         }
 
@@ -108,7 +110,7 @@ namespace AuctionSystem.Infrastructure.Repositories
                  .Select(b => b.Auction.CategoryId).Distinct().ToListAsync();
 
             return await _context.Auctions
-                .Where(a => categoryIds.Contains(a.CategoryId) 
+                .Where(a => categoryIds.Contains(a.CategoryId)
                      && a.StartTime <= DateTime.UtcNow &&
                       a.EndTime >= DateTime.UtcNow &&
                        !a.IsCanceled)
@@ -117,14 +119,12 @@ namespace AuctionSystem.Infrastructure.Repositories
                 .Include(a => a.Bids)
                 .Include(a => a.CreatedBy)
                    .ToListAsync();
-
-
         }
         public async Task<IEnumerable<Auction>> GetHotAuctionsAsync(int take = 10)
         {
             return await _context.Auctions
                 .Where(a => !a.IsCanceled && a.StartTime <= DateTime.UtcNow &&
-                      a.EndTime >= DateTime.UtcNow)
+                      a.EndTime >= DateTime.UtcNow && a.Bids.Any() )
                 .OrderByDescending(a => a.Bids.Count)
                 .Take(take)
                 .Include(a => a.CreatedBy)

@@ -17,8 +17,11 @@ namespace AuctionSystem.Application.DTOS.AuctionProfile
         public string SellerName { get; set; } = default!;
 
         public int BidsCount { get; set; }
+        public string Description { get; set; } = default!;
+        public DateTime StartTime { get; set; }
 
         public List<string> ThumbnailImage { get; set; } = [];
+
         public string AuctionStatus { get; set; } = default!; // This can be "open", "closed", or "canceled"
 
     }

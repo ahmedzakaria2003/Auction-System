@@ -56,20 +56,44 @@ public class DepositService : IDepositService
     public async Task HandleStripeWebhookAsync(string requestBody, string signature)
     {
         var endpointSecret = _config["StripeSettings:WebhookSecret"];
-        var stripeEvent = EventUtility.ConstructEvent(requestBody, signature, endpointSecret);
+        Event stripeEvent;
+
+        try
+        {
+            stripeEvent = EventUtility.ConstructEvent(requestBody, signature, endpointSecret);
+            Console.WriteLine($"Webhook received: {stripeEvent.Type}");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Webhook signature verification failed: {ex.Message}");
+            throw;
+        }
 
         if (stripeEvent.Type == "payment_intent.succeeded")
         {
             var paymentIntent = stripeEvent.Data.Object as PaymentIntent;
+            Console.WriteLine($"PaymentIntent received: {paymentIntent?.Id}");
+
             var deposit = await _unitOfWork.Deposits.GetByPaymentIntentIdAsync(paymentIntent!.Id);
 
             if (deposit != null)
             {
+                Console.WriteLine($"Found deposit! UserId={deposit.UserId}, AuctionId={deposit.AuctionId}, IsPaid={deposit.IsPaid}");
                 deposit.IsPaid = true;
                 await _unitOfWork.SaveChangesAsync();
+                Console.WriteLine($"Deposit updated! IsPaid={deposit.IsPaid}");
+            }
+            else
+            {
+                Console.WriteLine("Deposit NOT found for this PaymentIntentId!");
             }
         }
+        else
+        {
+            Console.WriteLine($"Unhandled event type: {stripeEvent.Type}");
+        }
     }
+
 
     public async Task<bool> HasUserPaidDepositAsync(Guid userId, Guid auctionId)
     {
@@ -81,12 +105,8 @@ public class DepositService : IDepositService
         StripeConfiguration.ApiKey = _config["StripeSettings:SecretKey"];
 
         var service = new PaymentIntentService();
-        var options = new PaymentIntentConfirmOptions
-        {
-            PaymentMethod = "pm_card_visa" 
-        };
 
-        var intent = await service.ConfirmAsync(paymentIntentId, options);
+        var intent = await service.GetAsync(paymentIntentId);
 
         if (intent.Status == "succeeded")
         {
@@ -102,5 +122,6 @@ public class DepositService : IDepositService
 
         return false;
     }
+
 
 }

@@ -49,15 +49,15 @@ namespace AuctionSystem.Application.Services.Managers
                   }).ToList(),
 
                 BiddersStats = auctions.SelectMany(a => a.Bids)
-                  .GroupBy(b => b.BidderId)
-                  .Select(g => new BidderStatsDto
-                  {
-                      BidderName = g.FirstOrDefault()?.Bidder?.FullName ?? "Unknown",
-                      BidderId = g.Key,
-                      TotalBids = g.Count(),
-                      TotalAmountSpent = g.Sum(b => b.Amount)
-                  }).OrderByDescending(b => b.TotalBids)
-                  .FirstOrDefault(),
+                    .GroupBy(b => b.BidderId)
+                    .Select(g => new BidderStatsDto
+                    {
+                        BidderName = g.FirstOrDefault()?.Bidder?.FullName ?? "Unknown",
+                        BidderId = g.Key,
+                        TotalBids = g.Count(),
+                        TotalAmountSpent = g.Sum(b => b.Amount)
+                    }).OrderByDescending(b => b.TotalBids)
+                    .FirstOrDefault(),
 
                 MostBidAuction = auctions
                   .OrderByDescending(a => a.Bids.Count)

@@ -6,6 +6,7 @@ namespace AuctionSystem.Application.Contracts
     public interface ICategoryRepository : IGenericRepository<Category> 
     {
 
+
         Task<IEnumerable<Category>> GetAllCategoriesWithAuctionsAsync();
 
     }

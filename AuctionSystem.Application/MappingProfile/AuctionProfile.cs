@@ -10,7 +10,7 @@ namespace AuctionSystem.Application.Mappings
         {
             // Auction <-> CreateAuctionDto
             CreateMap<CreateAuctionDto, Auction>()
-       .ForMember(dest => dest.Images, opt => opt.Ignore()); 
+       .ForMember(dest => dest.Images, opt => opt.Ignore());
 
 
             // Auction -> AuctionListDto
@@ -20,8 +20,8 @@ namespace AuctionSystem.Application.Mappings
                      .ForMember(dest => dest.BidsCount, opt => opt.MapFrom(src => src.Bids.Count()))
                 .ForMember(dest => dest.ThumbnailImage,
          opt => opt.MapFrom(src => src.Images.Select(img => img.FileName).ToList()))
-                .ForMember(dest => dest.AuctionStatus, opt => opt.MapFrom(src => src.Status.ToString()))
-;
+                .ForMember(dest => dest.AuctionStatus, opt => opt.MapFrom(src => src.Status.ToString()));
+
 
 
 
@@ -29,6 +29,7 @@ namespace AuctionSystem.Application.Mappings
             CreateMap<Auction, AuctionDetailsDto>()
                 .ForMember(dest => dest.CategoryName, opt => opt.MapFrom(src => src.Category.Name))
                 .ForMember(dest => dest.SellerName, opt => opt.MapFrom(src => src.CreatedBy.UserName))
+                .ForMember(dest => dest.SellerId, opt => opt.MapFrom(src => src.CreatedBy.Id))
 
          .ForMember(dest => dest.ItemImageUrls,
              opt => opt.MapFrom(src => src.Images.Select(img => img.FileName).ToList()))
@@ -43,9 +44,11 @@ namespace AuctionSystem.Application.Mappings
 
                 .ForMember(dest => dest.HighestBidderName, opt => opt.MapFrom
                 (src => src.Bids.OrderByDescending(b => b.Amount)
-                .Select(b => b.Bidder.UserName).FirstOrDefault()));
+                .Select(b => b.Bidder.UserName).FirstOrDefault()))
+      //.ForMember(dest => dest.AuctionStatus, opt => opt.MapFrom(src => src.Status.ToString()))
+;
 
-        
+
             // Auction <-> UpdateAuctionDto
             CreateMap<UpdateAuctionDto, Auction>()
      .ForMember(dest => dest.Images, opt => opt.Ignore());

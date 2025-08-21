@@ -3,6 +3,8 @@
 public class RegisterDto
 {
     [Required(ErrorMessage = "Username is required")]
+    [RegularExpression(@"^[\p{L}\p{N}]+$", ErrorMessage = "Username can only contain letters or digits.")]
+
     public string UserName { get; set; } = default!;
 
     [Required(ErrorMessage = "Email is required")]

@@ -10,5 +10,6 @@ namespace AuctionSystem.Application.Contracts
         Task AddFeedbackAsync(SellerFeedback feedback);
         Task<List<SellerFeedback>> GetFeedbacksForSellerAsync(Guid sellerId);
         Task<double> GetAverageRatingForSellerAsync(Guid sellerId);
+        Task<bool> HasUserRatedAuctionAsync(Guid auctionId, Guid bidderId);
     }
 }

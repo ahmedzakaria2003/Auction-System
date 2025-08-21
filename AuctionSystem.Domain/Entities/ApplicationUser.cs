@@ -13,6 +13,7 @@ namespace AuctionSystem.Domain.Entities
         public ICollection<Auction> WonAuctions { get; set; } = [];
         public ICollection<Bid> Bids { get; set; } = [];
         public ICollection<SellerFeedback> SellerFeedbacks { get; set; } = [];
+        public string UserType { get; set; } = default!;
         public bool IsBanned { get; set; } = false;
         public string FullName { get; set; } = default!;  
         public string Address { get; set; } = default!; 

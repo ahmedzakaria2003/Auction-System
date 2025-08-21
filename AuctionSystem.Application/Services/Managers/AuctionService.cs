@@ -1,4 +1,5 @@
 ﻿using AuctionSystem.Application.Contracts;
+using AuctionSystem.Application.DTOS;
 using AuctionSystem.Application.DTOS.AuctionDTO;
 using AuctionSystem.Application.DTOS.AuctionProfile;
 using AuctionSystem.Application.Services.Contracts;
@@ -77,13 +78,7 @@ namespace AuctionSystem.Application.Services.Managers
                 throw new UnauthorizedException
                     ($"You are not allowed to update this auction with ID {auctionId}.");
 
-            if (auction.StartTime <= DateTime.UtcNow)
-            {
-                if (dto.EndTime != auction.EndTime || dto.StartingPrice != auction.StartingPrice)
-                {
-                    throw new BadRequestException("You cannot modify StartPrice or EndDate after the auction has started.");
-                }
-            }
+         
 
             _mapper.Map(dto, auction);
 
@@ -124,8 +119,7 @@ namespace AuctionSystem.Application.Services.Managers
 
             if (auction is null)
                 throw new NotFoundException($"Auction with ID {auctionId} not found.");
-            if (auction.Bids.Count > 0)
-                throw new BadRequestException($"Cannot delete auction {auctionId} with bids.");
+      
 
             if (auction.Images != null && auction.Images.Any())
             {
@@ -135,11 +129,8 @@ namespace AuctionSystem.Application.Services.Managers
                 }
             }
 
-            if (auction.CreatedById != userId)
-            {
-                throw new UnauthorizedException
-                    ($"You are not allowed to Delete this auction with ID {auctionId}.");
-            }
+      
+
 
             await _unitOfWork.Auctions.DeleteAsync(auction);
 
@@ -149,12 +140,25 @@ namespace AuctionSystem.Application.Services.Managers
             return await _unitOfWork.SaveChangesAsync() > 0;
         }
 
-        public async Task<IEnumerable<AuctionListDto>> GetAllAuctionsAsync()
+        public async Task<PaginatedResult<AuctionListDto>> GetAllAuctionsAsync
+            (AuctionQueryParamsDto queryParamsDto)
         {
-            var auctions = await _unitOfWork.Auctions.GetAllAuctionsAsync();
+            var queryParams = _mapper.Map<AuctionQueryParams>(queryParamsDto);
+            var spec = new AllAuctionSpecifications(queryParams);
+            var countSpec = new AllAuctionSpecificationsCount(queryParams);
+            var totalCount = await _unitOfWork.Auctions.CountAsync(countSpec);
+            var auctions = await _unitOfWork.Auctions.ListAsync(spec);
             if (auctions == null || !auctions.Any())
                 throw new NotFoundException("No auctions found.");  
-            return _mapper.Map<IEnumerable<AuctionListDto>>(auctions);
+           
+                var data =_mapper.Map<IReadOnlyList<AuctionListDto>>(auctions);
+            return new PaginatedResult<AuctionListDto>
+            {
+                Data = data,
+                Count = totalCount,
+                PageNumber = queryParams.PageNumber,
+                PageSize = queryParams.PageSize
+            };
         }
 
         public async Task<PaginatedResult<AuctionListDto>> GetActiveAuctionsAsync(AuctionQueryParams queryParams)
@@ -167,7 +171,7 @@ namespace AuctionSystem.Application.Services.Managers
             if (auctions == null || !auctions.Any())
                 throw new NotFoundException("No active auctions found.");
 
-          var data = _mapper.Map<IEnumerable<AuctionListDto>>(auctions);
+          var data = _mapper.Map<IReadOnlyList<AuctionListDto>>(auctions);
             return new PaginatedResult<AuctionListDto>
             {
                 Data = data,
@@ -187,8 +191,11 @@ namespace AuctionSystem.Application.Services.Managers
             return _mapper.Map<AuctionDetailsDto>(auction);
         }
 
-        public async Task<PaginatedResult<AuctionListDto>> GetAuctionsByCreatorAsync(AuctionQueryParams queryParams, Guid userId)
+        public async Task<PaginatedResult<AuctionListDto>> GetAuctionsByCreatorAsync
+            (AuctionQueryParamsDto queryParamsDto, Guid userId)
         {
+            var queryParams = _mapper.Map<AuctionQueryParams>(queryParamsDto);
+
             var spec = new AuctionByCreatorSpecification(queryParams, userId);
             var countSpec = new AuctionByCreatorSpecificationForCount(queryParams, userId);
 
@@ -208,6 +215,7 @@ namespace AuctionSystem.Application.Services.Managers
                 PageSize = queryParams.PageSize
             };
         }
+
 
 
         public async Task<bool> CancelAuctionAsync(Guid auctionId)

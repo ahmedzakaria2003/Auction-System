@@ -27,7 +27,7 @@ public class AuthenticationService : IAuthenticationService
     {
         var user = await _userManager.FindByEmailAsync(loginDto.Email);
         if (user == null || !await _userManager.CheckPasswordAsync(user, loginDto.Password))
-            throw new UnauthorizedException("Invalid username or password");
+            throw new UnauthorizedException("Invalid Email or password");
 
         var roles = await _userManager.GetRolesAsync(user);
         var accessToken = await _tokenService.GenerateTokenAsync(user, roles);
@@ -55,23 +55,30 @@ public class AuthenticationService : IAuthenticationService
 
     public async Task<RegisterResultDto> RegisterAsync(RegisterDto registerDto)
     {
+        var existingUser = await _userManager.FindByEmailAsync(registerDto.Email);
+        if (existingUser != null)
+        {
+            throw new BadRequestException("Email is already registered.");
+        }
+
+        if (registerDto.UserType != "Seller" && registerDto.UserType != "Bidder")
+            throw new BadRequestException("Invalid user type");
+
         var user = new ApplicationUser
         {
             UserName = registerDto.UserName,
             Email = registerDto.Email,
             PhoneNumber = registerDto.PhoneNumber,
             Address = registerDto.Address,
-            FullName = registerDto.FullName
+            FullName = registerDto.FullName,
+            UserType = registerDto.UserType,
         };
 
         var result = await _userManager.CreateAsync(user, registerDto.Password);
         if (!result.Succeeded)
             throw new BadRequestException(result.Errors.Select(e => e.Description).ToList());
 
-        if (registerDto.UserType != "Seller" && registerDto.UserType != "Bidder")
-            throw new BadRequestException("Invalid user type");
-
-        await _userManager.AddToRoleAsync(user, registerDto.UserType);
+        await _userManager.AddToRoleAsync(user, registerDto.UserType);  // "Seller" أو "Bidder"
 
         var token = await _tokenService.GenerateTokenAsync(user, new[] { registerDto.UserType });
 
@@ -113,7 +120,7 @@ public class AuthenticationService : IAuthenticationService
     {
         var user = await _userManager.FindByEmailAsync(userEmail);
         if (user == null)
-            throw new NotFoundException("User not found");
+            throw new NotFoundException("Email not found");
 
         var otp = GenerateOtp();
         await _otpService.SendOtpToEmail(userEmail, otp);
@@ -123,15 +130,17 @@ public class AuthenticationService : IAuthenticationService
     public async Task<bool> VerifyOtpAsync(string userEmail, string otp)
     {
         var savedOtp = await _otpService.GetOtpAsync(userEmail);
+        if (savedOtp!= otp)
+        {
+            throw new BadRequestException("Otp Not Match");
+        }
+
         return savedOtp == otp;
     }
 
     public async Task<bool> ResetPasswordAsync(ResetPasswordDto dto)
     {
-        var isValidOtp = await VerifyOtpAsync(dto.Email, dto.Otp);
-        if (!isValidOtp)
-            throw new BadRequestException("Invalid OTP provided.");
-
+      
         var user = await _userManager.FindByEmailAsync(dto.Email);
         if (user == null)
             throw new NotFoundException("User not found.");

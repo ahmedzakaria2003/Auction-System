@@ -1,5 +1,6 @@
 ﻿using Auction_System.Controllers;
 using Auction_System.Extensions;
+using AuctionSystem.Application.DTOS;
 using AuctionSystem.Application.DTOS.AuctionProfile;
 using AuctionSystem.Application.Services.Contracts;
 using AuctionSystem.Shared;
@@ -17,9 +18,9 @@ public class AuctionController : ApiBaseController
 
     [Authorize(Roles = "Admin")]
     [HttpGet("all-auctions")]
-    public async Task<ActionResult<IEnumerable<AuctionListDto>>> GetAllAuctionsAsync()
+    public async Task<ActionResult<PaginatedResult<AuctionListDto>>> GetAllAuctionsAsync([FromQuery]AuctionQueryParamsDto queryParams)
     {
-        var allAuctions = await _serviceManager.AuctionService.GetAllAuctionsAsync();
+        var allAuctions = await _serviceManager.AuctionService.GetAllAuctionsAsync(queryParams);
         return Ok(new { message = "All auctions retrieved successfully.", status = "success", data = allAuctions });
     }
 
@@ -80,13 +81,13 @@ public class AuctionController : ApiBaseController
 
     [Authorize(Roles = "Admin,Seller")]
     [HttpGet("my-auctions")]
-    public async Task<ActionResult<IEnumerable<AuctionListDto>>> GetAuctionsByCreatorAsync([FromQuery] AuctionQueryParams queryParams)
+    public async Task<ActionResult<PaginatedResult<AuctionListDto>>> GetAuctionsByCreatorAsync([FromQuery] AuctionQueryParamsDto queryParamsDto)
     {
         var userId = User.GetUserId();
         if (userId == null)
             return Unauthorized(new { message = "User not authenticated." });
 
-        var auctionsByUser = await _serviceManager.AuctionService.GetAuctionsByCreatorAsync(queryParams, userId.Value);
+        var auctionsByUser = await _serviceManager.AuctionService.GetAuctionsByCreatorAsync(queryParamsDto, userId.Value);
         return Ok(new { message = "User's auctions retrieved successfully.", status = "success", data = auctionsByUser });
     }
 
@@ -103,7 +104,7 @@ public class AuctionController : ApiBaseController
     public async Task<ActionResult> DeclareWinner(Guid auctionId)
     {
         var result = await _serviceManager.AuctionService.DeclareWinnerAsync(auctionId);
-        return Ok(new { message = "Winner declared successfully.", status = "success", data = result });
+        return Ok(result);
     }
 
     [AllowAnonymous]
@@ -111,7 +112,7 @@ public class AuctionController : ApiBaseController
     public async Task<ActionResult<IEnumerable<AuctionListDto>>> GetHotAuctions([FromQuery] int take = 10)
     {
         var hotAuctions = await _serviceManager.AuctionService.GetHotAuctionsAsync(take);
-        return Ok(new { message = "Hot auctions retrieved successfully.", status = "success", data = hotAuctions });
+        return Ok(hotAuctions);
     }
 
     [Authorize(Roles = "Bidder")]
@@ -123,7 +124,7 @@ public class AuctionController : ApiBaseController
             return Unauthorized(new { message = "User not authenticated." });
 
         var recommendedAuctions = await _serviceManager.AuctionService.GetRecommendedAuctionsForBidderAsync(userId.Value);
-        return Ok(new { message = "Recommended auctions retrieved successfully.", status = "success", data = recommendedAuctions });
+        return Ok(recommendedAuctions);
     }
 }
 

@@ -1,4 +1,5 @@
-﻿using AuctionSystem.Application.DTOS.AuctionDTO;
+﻿using AuctionSystem.Application.DTOS;
+using AuctionSystem.Application.DTOS.AuctionDTO;
 using AuctionSystem.Application.DTOS.AuctionProfile;
 using AuctionSystem.Domain.Entities;
 using AuctionSystem.Shared;
@@ -12,10 +13,10 @@ namespace AuctionSystem.Application.Services.Contracts
 {
     public interface IAuctionService
     {
-        Task<IEnumerable<AuctionListDto>> GetAllAuctionsAsync();
+        Task<PaginatedResult<AuctionListDto>> GetAllAuctionsAsync(AuctionQueryParamsDto queryParamsDto);
         Task<PaginatedResult<AuctionListDto>> GetActiveAuctionsAsync(AuctionQueryParams queryParams);
         Task<AuctionDetailsDto?> GetAuctionDetailsAsync(Guid auctionId);
-        Task<PaginatedResult<AuctionListDto>> GetAuctionsByCreatorAsync(AuctionQueryParams queryParams, Guid userId);
+        Task<PaginatedResult<AuctionListDto>> GetAuctionsByCreatorAsync(AuctionQueryParamsDto queryParamsDto, Guid userId);
         Task<Guid> CreateAuctionAsync(CreateAuctionDto dto , Guid userId);
         Task<bool> UpdateAuctionAsync(Guid auctionId, UpdateAuctionDto dto , Guid userId);
         Task<bool> DeleteAuctionAsync(Guid auctionId , Guid userId);

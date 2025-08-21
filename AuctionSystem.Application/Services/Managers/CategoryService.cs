@@ -1,4 +1,5 @@
 ﻿using AuctionSystem.Application.Contracts;
+using AuctionSystem.Application.DTOS;
 using AuctionSystem.Application.DTOS.AuctionProfile;
 using AuctionSystem.Application.DTOS.CategoryProfile;
 using AuctionSystem.Application.Services.Contracts;
@@ -25,15 +26,30 @@ namespace AuctionSystem.Application.Services.Managers
             _mapper = mapper;
         }
 
-        public async Task<IEnumerable<CategoryDto>> GetAllCategoriesAsync()
+        public async Task<PaginatedResult<CategoryDto>> GetAllCategoriesAsync
+            (AuctionQueryParamsDto auctionQuery)
         {
-            var categories = await _unitOfWork.Categories.GetAllAsync();
-            if (categories == null || !categories.Any())
+            var spec = _mapper.Map<AuctionQueryParams>(auctionQuery);
+            var specForCount = new CategorySpecificationForCount(spec);
+            var totalCount = await _unitOfWork.Categories.CountAsync(specForCount);
+            if (totalCount == 0)
                 throw new NotFoundException("No categories found.");
-            return _mapper.Map<IEnumerable<CategoryDto>>(categories);
+            var categorySpec = new CategorySpecification(spec);
+            var categories = await _unitOfWork.Categories.ListAsync(categorySpec);
+
+           var data=  _mapper.Map<IReadOnlyList<CategoryDto>>(categories);
+
+            return new PaginatedResult<CategoryDto>
+            {
+                Data = data,
+                Count = totalCount,
+                PageNumber = spec.PageNumber,
+                PageSize = spec.PageSize
+            };
         }
 
-        public async Task<PaginatedResult<CategoryWithAuctionsDto>> GetCategoryWithAuctionsAsync(AuctionQueryParams queryParams, Guid categoryId)
+        public async Task<PaginatedResult<CategoryWithAuctionsDto>> GetCategoryWithAuctionsAsync
+            (AuctionQueryParamsDto queryParams, Guid categoryId)
         {
             // Get the category first
             var category = await _unitOfWork.Categories.GetByIdAsync(categoryId);
@@ -42,10 +58,12 @@ namespace AuctionSystem.Application.Services.Managers
                 throw new NotFoundException($"Category with ID {categoryId} not found.");
 
             // Apply filtering on Auctions manually
-            var spec = new AuctionsByCategorySpecification(queryParams, categoryId);
-            var countSpec = new AuctionsByCategorySpecificationForCount(queryParams, categoryId);
+            var spec = _mapper.Map<AuctionQueryParams>(queryParams);
+
+            var catspec = new AuctionsByCategorySpecification(spec, categoryId);
+            var countSpec = new AuctionsByCategorySpecificationForCount(spec ,categoryId);
             var totalCount = await _unitOfWork.Auctions.CountAsync(countSpec);
-            var filteredAuctions = await _unitOfWork.Auctions.ListAsync(spec);
+            var filteredAuctions = await _unitOfWork.Auctions.ListAsync(catspec);
 
             // Inject the filtered auctions into category manually
             category.Auctions = filteredAuctions.ToList();
@@ -65,6 +83,7 @@ namespace AuctionSystem.Application.Services.Managers
                 Name = category.Name,
                 PagedAuctions = pagedAuctions
             };
+
             return new PaginatedResult<CategoryWithAuctionsDto>
             {
                 Data = new List<CategoryWithAuctionsDto> { categoryDto },
@@ -116,6 +135,16 @@ namespace AuctionSystem.Application.Services.Managers
             if (categories == null || !categories.Any())
                 throw new NotFoundException("No categories with auctions found.");
             return  _mapper.Map<IEnumerable<CategoryWithAuctionsDto>>(categories);
+        }
+
+        public async Task<IEnumerable<CategoryDto>> GetAllCategoriesForDropdownAsync()
+        {
+            var categories = await _unitOfWork.Categories.GetAllAsync();
+            if (categories == null || !categories.Any())
+                throw new NotFoundException("No categories with auctions found.");
+
+            return _mapper.Map<IEnumerable<CategoryDto>>(categories);
+
         }
     }
 }

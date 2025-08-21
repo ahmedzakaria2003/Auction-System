@@ -6,7 +6,9 @@ namespace AuctionSystem.Application.Specification
 {
     public class AuctionWithFiltersSpecification : BaseSpecification<Auction>
     {
-        public AuctionWithFiltersSpecification(AuctionQueryParams queryParams)
+        public AuctionWithFiltersSpecification
+            
+            (AuctionQueryParams queryParams)
             : base(a =>
               !a.IsCanceled &&
                a.EndTime > DateTime.UtcNow &&

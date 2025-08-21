@@ -32,4 +32,11 @@ public class SellerFeedbackRepository : ISellerFeedbackRepository
             .Where(f => f.SellerId == sellerId)
             .AverageAsync(f => (double?)f.Rating) ?? 0.0;
     }
+
+    public async Task<bool> HasUserRatedAuctionAsync(Guid auctionId, Guid bidderId)
+    {
+        return await _context.SellerFeedbacks
+                   .AnyAsync(f => f.AuctionId == auctionId && f.BidderId == bidderId);
+    }
+
 }

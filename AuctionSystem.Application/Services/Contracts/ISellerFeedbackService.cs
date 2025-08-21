@@ -11,5 +11,6 @@ namespace AuctionSystem.Application.Services.Contracts
         Task AddFeedbackAsync(SellerFeedbackDto feedbackDto);
         Task<List<SellerFeedbackDto>> GetFeedbacksForSellerAsync(Guid sellerId);
         Task<double> GetAverageRatingForSellerAsync(Guid sellerId);
+        Task<bool> HasUserRatedAuctionAsync(Guid userId, Guid auctionId);
     }
 }

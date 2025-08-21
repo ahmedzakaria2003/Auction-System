@@ -8,9 +8,9 @@ namespace AuctionSystem.Application.DTOS.AuctionDTO
 {
     public class WinnerDto
     {
-        public string WinnerName { get; set; } = string.Empty;
-        public string Email { get; set; } = string.Empty;
-        public string PhoneNumber { get; set; } = string.Empty;
+        public string WinnerName { get; set; } = default!;
+        public string Email { get; set; } = default!;
+        public string PhoneNumber { get; set; } = default!;
         public decimal WinningAmount { get; set; }
         public string AuctionTitle { get; set; } = string.Empty;
     }

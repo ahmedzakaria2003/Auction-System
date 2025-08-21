@@ -1,4 +1,7 @@
 ﻿using Auction_System.Extensions;
+using AuctionSystem.Application.DTOS;
+using AuctionSystem.Application.DTOS.AdminDTO;
+using AuctionSystem.Application.DTOS.AuctionProfile;
 using AuctionSystem.Application.Services.Contracts;
 using AuctionSystem.Application.Specification;
 using AuctionSystem.Shared;
@@ -44,7 +47,8 @@ namespace Auction_System.Controllers
         }
 
         [HttpGet("seller-auctions-management")]
-        public async Task<ActionResult> GetSellersAuctionsAsync([FromQuery] AuctionQueryParams specParams )
+        public async Task<ActionResult<PaginatedResult<AuctionListDto>>> GetSellersAuctionsAsync
+            ([FromQuery] AuctionQueryParamsDto specParams )
         {
             var userId = User.GetUserId();
             if (userId == null)
@@ -55,14 +59,15 @@ namespace Auction_System.Controllers
 
             var auctions = await _serviceManager.AdminService.GetSellersAuctions(specParams, userId!.Value , isAdmin);
 
-            return Ok(auctions);
+            return Ok(new { message = "User's auctions retrieved successfully.", status = "success", data = auctions });
 
         }
 
         [HttpGet("all-users")]
-        public async Task<ActionResult> GetAllUsers()
+        public async Task<ActionResult<PaginatedResult<UserDto>>> GetAllUsers
+            ([FromQuery] UserQueryParamsDto paramsDto)
         {
-            var users = await _serviceManager.AdminService.GetAllUsersAsync();
+            var users = await _serviceManager.AdminService.GetAllUsersAsync(paramsDto);
             return Ok(users);
 
         }
@@ -70,14 +75,14 @@ namespace Auction_System.Controllers
         public async Task<ActionResult> BanUserAsync(Guid userId)
         {
             await _serviceManager.AdminService.BanUserAsync(userId);
-            return Ok("User banned successfully.");
+            return Ok(new { message = "User banned successfully." });
 
         }
         [HttpPost("unban-user/{userId}")]
         public async Task<ActionResult> UnbanUserAsync(Guid userId)
         {
             await _serviceManager.AdminService.UnbanUserAsync(userId);
-            return Ok("User unbanned successfully.");
+            return Ok(new { message = "User banned successfully." });
         }
     }
 }

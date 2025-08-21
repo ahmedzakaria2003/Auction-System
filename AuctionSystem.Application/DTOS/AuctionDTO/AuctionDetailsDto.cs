@@ -18,6 +18,7 @@ namespace AuctionSystem.Application.DTOS.AuctionProfile
         public DateTime EndTime { get; set; }
         public string CategoryName { get; set; } = default!;
         public string SellerName { get; set; } = default!;
+        public Guid SellerId { get; set; }
         public int TotalBids { get; set; }
         public string? WinnerName { get; set; }
         public List<BidDto> Bids { get; set; } = new();

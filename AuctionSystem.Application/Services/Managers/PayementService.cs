@@ -6,16 +6,16 @@ using Microsoft.Extensions.Configuration;
 using Stripe;
 
 
-public class PaymentService(IConfiguration config, IUnitOfWork unitOfWork) : IPayementService
+public class PaymentService(IConfiguration config, IUnitOfWork _unitOfWork) : IPayementService
 {
-
+  
 
     public async Task<PaymentIntentDTO> CreatePaymentIntentForAuctionAsync(Guid auctionId)
     {
         StripeConfiguration.ApiKey = config["StripeSettings:SecretKey"];
 
 
-        var auction = await unitOfWork.Auctions.GetByIdAsync(auctionId)
+        var auction = await _unitOfWork.Auctions.GetByIdAsync(auctionId)
             ?? throw new NotFoundException("Auction not found");
 
         if (auction.IsPaid)
@@ -32,7 +32,7 @@ public class PaymentService(IConfiguration config, IUnitOfWork unitOfWork) : IPa
         var intent = await service.CreateAsync(options);
 
         auction.PaymentIntentId = intent.Id;
-        await unitOfWork.SaveChangesAsync();
+        await _unitOfWork.SaveChangesAsync();
 
         return new PaymentIntentDTO
         {
@@ -53,7 +53,7 @@ public class PaymentService(IConfiguration config, IUnitOfWork unitOfWork) : IPa
             var paymentIntent = stripeEvent.Data.Object as PaymentIntent;
             Console.WriteLine($" paymentIntent Id: {paymentIntent?.Id}");
 
-            var auction = await unitOfWork.Auctions.GetByPaymentIntentIdAsync(paymentIntent!.Id);
+            var auction = await _unitOfWork.Auctions.GetByPaymentIntentIdAsync(paymentIntent!.Id);
 
             if (auction == null)
             {
@@ -63,7 +63,7 @@ public class PaymentService(IConfiguration config, IUnitOfWork unitOfWork) : IPa
 
             auction.IsPaid = true;
             
-            var result = await unitOfWork.SaveChangesAsync();
+            var result = await _unitOfWork.SaveChangesAsync();
             Console.WriteLine($"Auction updated: {auction.Id}, SaveChanges result: {result}");
         }
     }
@@ -75,14 +75,24 @@ public class PaymentService(IConfiguration config, IUnitOfWork unitOfWork) : IPa
 
         var service = new PaymentIntentService();
 
-        var options = new PaymentIntentConfirmOptions
+   
+
+        var intent = await service.GetAsync(paymentIntentId);
+
+
+        if (intent.Status == "succeeded")
         {
-            PaymentMethod = "pm_card_visa" 
-        };
+            var Pay = await _unitOfWork.Auctions.GetByPaymentIntentIdAsync(paymentIntentId);
+            if (Pay != null && !Pay.IsPaid)
+            {
+                Pay.IsPaid = true;
+                await _unitOfWork.SaveChangesAsync();
+            }
 
-        var intent = await service.ConfirmAsync(paymentIntentId, options);
+            return true;
+        }
 
-        return intent.Status == "succeeded";
+        return false;
     }
 
 

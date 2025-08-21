@@ -1,4 +1,5 @@
-﻿using AuctionSystem.Application.DTOS.CategoryProfile;
+﻿using AuctionSystem.Application.DTOS;
+using AuctionSystem.Application.DTOS.CategoryProfile;
 using AuctionSystem.Domain.Entities;
 using AuctionSystem.Shared;
 using System;
@@ -11,10 +12,12 @@ namespace AuctionSystem.Application.Services.Contracts
 {
     public interface ICategoryService
     {
-        Task<IEnumerable<CategoryDto>> GetAllCategoriesAsync();
+        Task<IEnumerable<CategoryDto>> GetAllCategoriesForDropdownAsync();
+
+        Task<PaginatedResult<CategoryDto>> GetAllCategoriesAsync(AuctionQueryParamsDto paramsDto );
         Task<IEnumerable<CategoryWithAuctionsDto>> GetAllCategoriesWithAuctionsAsync();
 
-        Task<PaginatedResult<CategoryWithAuctionsDto>> GetCategoryWithAuctionsAsync(AuctionQueryParams queryParams, Guid categoryId);
+        Task<PaginatedResult<CategoryWithAuctionsDto>> GetCategoryWithAuctionsAsync(AuctionQueryParamsDto paramsDto, Guid categoryId);
 
         Task<Guid> CreateCategoryAsync(CreateCategoryDto dto);
 

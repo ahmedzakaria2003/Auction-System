@@ -1,4 +1,5 @@
-﻿using AuctionSystem.Application.DTOS.AdminDTO;
+﻿using AuctionSystem.Application.DTOS;
+using AuctionSystem.Application.DTOS.AdminDTO;
 using AuctionSystem.Application.DTOS.AuctionProfile;
 using AuctionSystem.Application.Specification;
 using AuctionSystem.Shared;
@@ -12,9 +13,10 @@ namespace AuctionSystem.Application.Services.Contracts
 {
     public interface IAdminService
     {
-        Task<PaginatedResult<AuctionListDto>> GetSellersAuctions(AuctionQueryParams specParams, Guid userId , bool IsAdmin);
+        Task<PaginatedResult<AuctionListDto>> GetSellersAuctions
+            (AuctionQueryParamsDto queryParamsDto, Guid userId , bool IsAdmin);
         Task<AuctionStatisticsDto> GetAuctionStatisticsAsync();
-        Task<List<UserDto>> GetAllUsersAsync();
+        Task<PaginatedResult<UserDto>> GetAllUsersAsync(UserQueryParamsDto paramsDto);
         Task BanUserAsync(Guid userId);
         Task UnbanUserAsync(Guid userId);
 
