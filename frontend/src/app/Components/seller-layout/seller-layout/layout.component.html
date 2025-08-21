@@ -1,0 +1,71 @@
+
+    <div class="admin-dashboard">
+      <!-- Mobile Menu Toggle -->
+      <button class="mobile-menu-toggle d-lg-none" (click)="toggleSidebar()">
+        <i class="fas fa-bars"></i>
+      </button>
+
+      <!-- Sidebar Overlay for Mobile -->
+      <div class="sidebar-overlay" [class.show]="sidebarOpen" (click)="closeSidebar()"></div>
+
+      <!-- Sidebar -->
+      <nav class="sidebar" [class.show]="sidebarOpen">
+        <div class="sidebar-header">
+          <h3 class="text-auction-gold">
+            <i class="fas fa-crown me-2"></i>
+            لوحة البائع
+          </h3>
+          <button class="sidebar-close d-lg-none" (click)="closeSidebar()">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        
+        <ul class="sidebar-menu">
+          <li>
+            <a [routerLink]="'seller-statistics'" routerLinkActive="active" (click)="closeSidebar()">
+              <i class="fas fa-chart-bar"></i>
+              <span>الإحصائيات</span>
+            </a>
+          </li>
+          <li>
+            <a [routerLink]="'seller-auctions'" routerLinkActive="active" (click)="closeSidebar()">
+              <i class="fas fa-gavel"></i>
+              <span>مزاداتي</span>
+            </a>
+          </li>
+       
+        
+       
+          <li>
+            <a [routerLink]="'seller-reports'" routerLinkActive="active" (click)="closeSidebar()">
+              <i class="fas fa-file-alt"></i>
+              <span>التقارير</span>
+            </a>
+          </li>
+      
+        </ul>
+        
+       <div class="sidebar-footer">
+  <a href="#" class="logout-btn" (click)="logout()">
+    <i class="fas fa-sign-out-alt"></i>
+    <span>تسجيل الخروج</span>
+  </a>
+</div>
+
+      </nav>
+      
+      <!-- Main Content -->
+      <main class="main-content">
+        <!-- Top Header -->
+        <header class="top-header">
+          <div class="header-left">
+<h4 class="page-title">مرحباً بك في لوحة البائع</h4>          </div>
+      
+        </header>
+        
+        <!-- Page Content -->
+        <div class="page-content">
+          <router-outlet></router-outlet>
+        </div>
+      </main>
+    </div>

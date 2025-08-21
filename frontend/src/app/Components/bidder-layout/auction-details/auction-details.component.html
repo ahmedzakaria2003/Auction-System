@@ -1,0 +1,365 @@
+<div class="auction-details-page" *ngIf="auctionDetails">
+<app-nav-bar></app-nav-bar>
+
+  <!-- Auction Hero Section -->
+  <section class="auction-hero">
+    <div class="container">
+      <div class="row">
+        <!-- Image Gallery -->
+        <div class="col-lg-7">
+          <div class="image-gallery">
+            <!-- Main Image -->
+            <div class="main-image-container">
+              <img [src]="normalizeImageUrl(selectedImage)" [alt]="auctionDetails.title" class="main-image">
+              <div class="image-overlay">
+                <button class="btn btn-light btn-sm zoom-btn" (click)="openImageModal()">
+                  <i class="fas fa-expand-arrows-alt"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- Thumbnail Gallery -->
+            <div class="thumbnail-gallery" *ngIf="auctionDetails.itemImageUrls.length > 1">
+              <div class="thumbnail-scroll">
+                <div 
+                  class="thumbnail" 
+                  *ngFor="let image of auctionDetails.itemImageUrls; let i = index"
+                  [class.active]="selectedImageIndex === i"
+                  (click)="selectImage(i)">
+                  <img [src]="normalizeImageUrl(image)" [alt]="'صورة ' + (i + 1)">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Auction Info -->
+        <div class="col-lg-5">
+          <div class="auction-info-card">
+            <div class="auction-status-badge" [class]="getAuctionStatusClass()">
+              {{getAuctionStatusText()}}
+            </div>
+
+            <h1 class="auction-title">{{auctionDetails.title}}</h1>
+            
+            <div class="auction-meta">
+              <div class="meta-item">
+                <i class="fas fa-user text-auction-gold"></i>
+                <span>البائع: {{auctionDetails.sellerName}}</span>
+              </div>
+              <div class="meta-item">
+                <i class="fas fa-tag text-auction-gold"></i>
+                <span>الفئة: {{auctionDetails.categoryName}}</span>
+              </div>
+              <div class="meta-item">
+                <i class="fas fa-hand-paper text-auction-gold"></i>
+                <span>عدد المزايدات: {{auctionDetails.totalBids}}</span>
+              </div>
+            </div>
+
+            <!-- Price Section -->
+            <div class="price-section">
+              <div class="current-price">
+                <span class="price-label">السعر الحالي</span>
+                <span class="price-value">${{auctionDetails.highestBidAmount || auctionDetails.startingPrice | number:'1.2-2'}}</span>
+              </div>
+              <div class="starting-price">
+                <span>السعر الابتدائي: ${{auctionDetails.startingPrice | number:'1.2-2'}}</span>
+              </div>
+            </div>
+
+            <!-- Timer -->
+            <div class="auction-timer">
+              <div class="timer-title">
+                <i class="fas fa-clock"></i>
+                <span *ngIf="timeRemaining.days >= 0">الوقت المتبقي</span>
+                <span *ngIf="timeRemaining.days < 0">انتهى المزاد</span>
+              </div>
+              <div class="timer-display" *ngIf="timeRemaining.days >= 0">
+                <div class="time-unit">
+                  <span class="time-value">{{timeRemaining.days}}</span>
+                  <span class="time-label">يوم</span>
+                </div>
+                <div class="time-unit">
+                  <span class="time-value">{{timeRemaining.hours}}</span>
+                  <span class="time-label">ساعة</span>
+                </div>
+                <div class="time-unit">
+                  <span class="time-value">{{timeRemaining.minutes}}</span>
+                  <span class="time-label">دقيقة</span>
+                </div>
+                <div class="time-unit">
+                  <span class="time-value">{{timeRemaining.seconds}}</span>
+                  <span class="time-label">ثانية</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Bidding Section -->
+            <div class="bidding-section" *ngIf="isAuctionActive()">
+              <div class="bid-input-group">
+                <input 
+                  type="number" 
+                  class="form-control bid-input" 
+                  placeholder="أدخل مزايدتك"
+                  [(ngModel)]="bidAmount"
+                  [min]="getMinimumBid()">
+                <span class="input-group-text">$</span>
+              </div>
+              <p class="minimum-bid-info">
+                الحد الأدنى للمزايدة: ${{getMinimumBid() | number:'1.2-2'}}
+              </p>
+              
+              <button 
+                class="btn btn-auction w-100" 
+                (click)="placeBid()"
+                [disabled]="!canPlaceBid()">
+                <i class="fas fa-gavel me-2"></i>
+                <span *ngIf="hasUserPaidDeposit">ضع مزايدتك</span>
+                <span *ngIf="!hasUserPaidDeposit">ادفع الضمان أولاً</span>
+              </button>
+
+              <button 
+                class="btn btn-outline-auction w-100 mt-2" 
+                (click)="openDepositModal()"
+                *ngIf="!hasUserPaidDeposit">
+                <i class="fas fa-credit-card me-2"></i>
+                دفع ضمان المشاركة (50 ج.م)
+              </button>
+            </div>
+
+            <!-- Winner Section -->
+            <div class="winner-section" *ngIf="auctionDetails.winnerName && !isAuctionActive()">
+              <div class="winner-card">
+                <i class="fas fa-trophy text-warning"></i>
+                <h5>الفائز: {{auctionDetails.winnerName}}</h5>
+                <p>السعر النهائي: ${{auctionDetails.finalPrice | number:'1.2-2'}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Description Section -->
+  <section class="description-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="description-card">
+            <h3>
+              <i class="fas fa-info-circle text-auction-gold me-2"></i>
+              تفاصيل المنتج
+            </h3>
+            <div class="description-content">
+              {{auctionDetails.description}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bidding History & Info -->
+  <section class="bidding-info-section">
+    <div class="container">
+      <div class="row">
+        <!-- Highest Bid Card -->
+        <div class="col-lg-6 mb-4">
+          <div class="info-card">
+            <div class="card-header">
+              <h4>
+                <i class="fas fa-crown text-warning me-2"></i>
+                أعلى مزايدة
+              </h4>
+            </div>
+            <div class="card-body" *ngIf="highestBid">
+              <div class="highest-bid-info">
+                <div class="bid-amount">
+                  <span class="amount">${{highestBid.amount | number:'1.2-2'}}</span>
+                </div>
+                <div class="bidder-info">
+                  <i class="fas fa-user"></i>
+                  <span>{{highestBid.bidderName}}</span>
+                </div>
+                <div class="bid-time">
+                  <i class="fas fa-clock"></i>
+                  <span>{{formatDateUTC(highestBid.bidTime)}}</span>
+                </div>
+              </div>
+            </div>
+            <div class="card-body text-center" *ngIf="!highestBid">
+              <p class="text-muted">لا توجد مزايدات بعد</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bid History Card -->
+        <div class="col-lg-6 mb-4">
+          <div class="info-card">
+            <div class="card-header">
+              <h4>
+                <i class="fas fa-history text-auction-gold me-2"></i>
+                تاريخ المزايدات
+              </h4>
+            </div>
+            <div class="card-body">
+              <div class="bid-history" *ngIf="bids.length > 0">
+                <div class="bid-item" *ngFor="let bid of bids">
+                  <div class="bid-info">
+                    <div class="bidder-name">{{bid.bidderName}}</div>
+                    <div class="bid-amount">${{bid.amount | number:'1.2-2'}}</div>
+                  </div>
+                  <div class="bid-time">
+                    {{formatDateUTC(bid.bidTime)}}
+                  </div>
+                </div>
+          
+              </div>
+              <div class="text-center" *ngIf="bids.length === 0">
+                <p class="text-muted">لا توجد مزايدات بعد</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Seller Feedback -->
+  <section class="seller-feedback-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="info-card">
+            <div class="card-header">
+              <h4>
+                <i class="fas fa-star text-warning me-2"></i>
+                تقييمات البائع
+              </h4>
+              <div class="seller-rating" *ngIf="sellerAverageRating > 0">
+                <div class="rating-stars">
+                  <i class="fas fa-star" *ngFor="let star of getStarsArray(sellerAverageRating)"></i>
+                  <i class="far fa-star" *ngFor="let star of getEmptyStarsArray(sellerAverageRating)"></i>
+                </div>
+                <span class="rating-value">{{sellerAverageRating | number:'1.1'}}</span>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="feedback-list" *ngIf="sellerFeedbacks.length > 0">
+                <div class="feedback-item" *ngFor="let feedback of sellerFeedbacks.slice(0, 3)">
+                  <div class="feedback-header">
+                    <div class="rating-stars">
+                      <i class="fas fa-star" *ngFor="let star of getStarsArray(feedback.rating)"></i>
+                      <i class="far fa-star" *ngFor="let star of getEmptyStarsArray(feedback.rating)"></i>
+                    </div>
+                    <!-- <span class="feedback-date">{{formatDateUTC(feedback.createdAt)}}</span> -->
+                  </div>
+                  <p class="feedback-comment">{{feedback.comment}}</p>
+                </div>
+              </div>
+              <div class="text-center" *ngIf="sellerFeedbacks.length === 0">
+                <p class="text-muted">لا توجد تقييمات للبائع بعد</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Recommended Auctions -->
+  <section class="recommended-auctions-section">
+    <div class="container">
+      <div class="section-header text-center">
+        <h3>
+          <i class="fas fa-lightbulb text-auction-gold me-2"></i>
+          مزادات مقترحة لك
+        </h3>
+      </div>
+      <div class="row">
+        <div class="col-lg-4 col-md-6 mb-4" *ngFor="let auction of recommendedAuctions">
+          <div class="auction-card" >
+            <div class="card-image">
+              <img [src]="(auction.thumbnailImage && auction.thumbnailImage[0]) ? normalizeImageUrl(auction.thumbnailImage[0]) : ''"
+                   alt="{{auction.title}}" class="img-thumbnail" *ngIf="auction.thumbnailImage && auction.thumbnailImage[0]">
+              <span *ngIf="!auction.thumbnailImage || !auction.thumbnailImage[0]" class="text-muted">لا يوجد صورة</span>
+              <div class="category-badge">{{auction.categoryName}}</div>
+            </div>
+           <div class="card-body">
+              <h5 class="card-title">{{auction.title}}</h5>
+              <div class="seller-info">
+                <i class="fas fa-user me-2"></i>{{auction.sellerName}}
+              </div>
+              <div class="price-section">
+                <span class="price-label">السعر الحالي</span>
+                <span class="price-value">${{auction.startingPrice | number:'1.2-2'}}</span>
+              </div>
+              <div class="auction-stats">
+                <div class="stat">
+                  <i class="fas fa-hand-paper text-auction-gold"></i>
+                  <strong>{{auction.bidsCount}} مزايدة</strong>
+                </div>
+
+
+              </div>
+              <button class="btn btn-auction w-100 mt-3" (click)="viewAuctionDetails(auction.id)">
+                <i class="fas fa-gavel me-2"></i>شارك في المزاد
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<!-- Deposit Payment Modal -->
+<div class="modal fade" id="depositModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">دفع ضمان المشاركة</h5>
+<button type="button" class="btn-close" (click)="closeModal('depositModal')"></button>
+      </div>
+      <div class="modal-body text-center">
+        <div class="deposit-info">
+          <i class="fas fa-shield-alt text-auction-gold fa-3x mb-3"></i>
+          <h4>ضمان المشاركة مطلوب</h4>
+          <p>للمشاركة في هذا المزاد، يجب دفع ضمان قدره <strong>50 ج.م</strong></p>
+          <p class="text-muted">هذا المبلغ قابل للاسترداد في حالة عدم الفوز</p>
+        </div>
+
+        <!-- Stripe Card Input -->
+        <div id="card-element" class="mb-3" 
+        style="border: 1px solid #ccc; padding: 10px; border-radius: 8px;">
+        </div>
+
+        <!-- Error message -->
+        <div id="card-errors" class="text-danger mb-3" role="alert"></div>
+
+        <button class="btn btn-auction btn-lg" (click)="processDeposit()">
+          <i class="fas fa-credit-card me-2"></i>
+          ادفع الضمان الآن
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <!-- Image Modal -->
+  <div class="modal fade" id="imageModal" tabindex="-1">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">{{auctionDetails.title}}</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body text-center">
+          <img [src]="normalizeImageUrl(selectedImage)" [alt]="auctionDetails.title" class="img-fluid">
+        </div>
+      </div>
+    </div>
+  </div>
+  <app-footer></app-footer>
+</div>
