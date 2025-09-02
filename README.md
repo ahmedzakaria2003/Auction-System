@@ -14,7 +14,7 @@ Before diving into the technical details, feel free to watch a demo of the syste
 
 ### 💡 **Real-Time Bidding**
 
-Using **SignalR**, this auction system provides real-time updates and notifications, ensuring that users receive instant notifications about bid updates and auction status.
+Using **SignalR**, this auction system provides real-time updates.
 
 ### 💳 **Stripe Payment Integration**
 
