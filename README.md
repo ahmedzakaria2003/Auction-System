@@ -1,6 +1,4 @@
-Here's the updated README with the correct LinkedIn post link and GitHub username:
 
----
 
 # Auction System - Full-Stack Platform
 
